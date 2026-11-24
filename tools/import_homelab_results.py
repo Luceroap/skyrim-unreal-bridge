@@ -3,10 +3,13 @@ Zips are kept in notes/homelab_inbox/ (done/ after import), never in Downloads. 
   * outputs (staging/..., notes/...) are copied to the same relative paths in the project (existing identical files are left alone)
   * tasks that finished OK are recorded in notes/progress_homelab_server.json, so no PC worker repeats them
   * tasks the server gave up on after 3 tries go to notes/needs_better_model/<id>.json; notes/needs_better_model/INDEX.md lists them for a stronger model or a person"""
-import json, os, sys, zipfile
+import json, os, sys, time, zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
+if sys.stdout is None or sys.stderr is None:      # started by pythonw / the scheduled job: keep a log instead of a window
+    sys.stdout = sys.stderr = open("notes/homelab_import.log", "a", encoding="utf-8", buffering=1)
+    print("--- " + time.strftime("%Y-%m-%d %H:%M:%S"))
 dry = "--dry-run" in sys.argv
 INBOX = "notes/homelab_inbox"
 args = [a for a in sys.argv[1:] if not a.startswith("--")]

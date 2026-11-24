@@ -9,7 +9,13 @@ Batch conversion of existing meshes (editor closed, changing materials of meshes
   UnrealEditor-Cmd.exe SkyBridge.uproject -run=pythonscript -script=<this file>
 """
 import os
+import sys
 import unreal
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+if _HERE not in sys.path:
+    sys.path.insert(0, _HERE)
+import npc_material_types as nmt
 
 AREA = r"C:\Users\Aidan\SkyrimUnrealBridge\area2"
 DEST = "/Game/Area2Tex"
@@ -77,12 +83,13 @@ def _e(m, cls, x, y, **props):
 
 # -> float3(damp amount, puddle amount, albedo multiplier). Depth fade: full within 60 m, gone by 160 m.
 # Walls = dampness of vertical faces (walls, trunks, leaves) relative to tops; undersides stay dry.
+# Resp scales the damp look per material (skin/metal barely darken), Pud = 0 keeps mirror puddles off heads and shoulders.
 WET_HLSL = """
 float fade = saturate(1.0 - (Depth - 6000.0) / 10000.0);
-float w = Wet * saturate(Up * (1.0 - Walls) + Walls) * fade;
+float w = Wet * Resp * saturate(Up * (1.0 - Walls) + Walls) * fade;
 float n = Noise.x * 0.8 + Noise.y * 0.2;
 float flat = saturate((Up - 0.85) * 8.0);
-float p = saturate((n - (1.0 - 0.65 * Wet)) * 12.0) * flat * fade;
+float p = saturate((n - (1.0 - 0.65 * Wet)) * 12.0) * flat * fade * Pud;
 return float3(w, p, lerp(1.0, 0.62, w) * lerp(1.0, 0.6, p));
 """
 
@@ -126,6 +133,18 @@ DETAIL_COLOR_HLSL = """
 float f = saturate(1.0 - (Depth - 300.0) / 1500.0) * S;
 return lerp(1.0, Dc * 2.0, f);
 """
+# Dark detail (leather creases, pores, scratches) is rougher, bright detail smoother; DR = 0 leaves roughness untouched.
+DETAIL_ROUGH_HLSL = """
+float f = saturate(1.0 - (Depth - 300.0) / 1500.0) * S;
+return saturate(R + (0.5 - Dc) * 2.0 * DR * f);
+"""
+# Second detail layer where Skyrim's spec mask is high (metal plates, studs, buckles) vs low (leather, cloth).
+DETAIL_SPLIT_HLSL = "return saturate((S - Split) * 6.0 + 0.5);"
+
+# Parameters the current M_SkyMaster graph exposes; an asset missing any of them is rebuilt in place by master().
+MASTER_SCALARS = ("DetailStrength", "RoughnessMatte", "RoughnessGloss", "DetailRoughness", "Metalness", "Specular",
+                  "ClothFuzz", "WetResponse", "Puddles", "SnowCover", "DetailTiling2", "DetailSplit")
+MASTER_TEXTURES = ("DetailNormalMap", "DetailColorMap", "DetailNormalMap2", "DetailColorMap2")
 
 
 def master():
@@ -134,9 +153,12 @@ def master():
     if eal.does_asset_exist(path):
         m = unreal.load_asset(path)
         try:
-            if "DetailStrength" in [str(n) for n in mel.get_scalar_parameter_names(m)] and                     "DetailNormalMap" in [str(n) for n in mel.get_texture_parameter_names(m)]:
+            scalars = {str(n) for n in mel.get_scalar_parameter_names(m)}
+            textures = {str(n) for n in mel.get_texture_parameter_names(m)}
+            if scalars.issuperset(MASTER_SCALARS) and textures.issuperset(MASTER_TEXTURES):
                 return m
-        except Exception:
+        except Exception as e:
+            log("M_SkyMaster parameter check failed, keeping the existing graph: %s" % e)
             return m
         mel.delete_all_material_expressions(m)
         log("upgrading M_SkyMaster graph")
@@ -168,30 +190,48 @@ def master():
     mel.connect_material_expressions(dith, "", sw_op, "True"); mel.connect_material_expressions(bc, "A", sw_op, "False")
     mel.connect_material_property(sw_op, "", MP.MP_OPACITY_MASK)
 
-    # roughness from Skyrim's specular mask: shiny (mask 1) -> 0.3, matte (mask 0) -> 0.9
+    # roughness from Skyrim's specular mask: shiny (mask 1) -> RoughnessGloss, matte (mask 0) -> RoughnessMatte.
+    # World defaults 0.3 / 0.9; NPC instances set a range per material kind (npc_material_types.PROFILES).
     sp = _e(m, E.MaterialExpressionTextureSampleParameter2D, -1400, 300, parameter_name="Spec", sampler_type=E.MaterialSamplerType.SAMPLERTYPE_LINEAR_COLOR)
     if spec_default: sp.set_editor_property("texture", spec_default)
-    lr = _e(m, E.MaterialExpressionLinearInterpolate, -1100, 300, const_a=0.9, const_b=0.3)
+    lr = _e(m, E.MaterialExpressionLinearInterpolate, -1100, 300)
+    mel.connect_material_expressions(_e(m, E.MaterialExpressionScalarParameter, -1250, 220, parameter_name="RoughnessMatte",
+                                        default_value=0.9), "", lr, "A")
+    mel.connect_material_expressions(_e(m, E.MaterialExpressionScalarParameter, -1250, 280, parameter_name="RoughnessGloss",
+                                        default_value=0.3), "", lr, "B")
     mel.connect_material_expressions(sp, "R", lr, "Alpha")
     nospec = _e(m, E.MaterialExpressionScalarParameter, -1100, 450, parameter_name="DefaultRoughness", default_value=0.8)
     sw_spec = _e(m, E.MaterialExpressionStaticSwitchParameter, -900, 350, parameter_name="HasSpec", default_value=False)
     mel.connect_material_expressions(lr, "", sw_spec, "True"); mel.connect_material_expressions(nospec, "", sw_spec, "False")
 
-    rough_src, metal_src = sw_spec, None
+    # metallic = Metalness x spec mask (Skyrim paints bare metal shiny, leather/cloth dull); world default 0
+    metal_p = _e(m, E.MaterialExpressionScalarParameter, -1100, 560, parameter_name="Metalness", default_value=0.0)
+    metal_s = _e(m, E.MaterialExpressionMultiply, -950, 560)
+    mel.connect_material_expressions(metal_p, "", metal_s, "A"); mel.connect_material_expressions(sp, "R", metal_s, "B")
+    sw_ms = _e(m, E.MaterialExpressionStaticSwitchParameter, -850, 600, parameter_name="HasSpec", default_value=False)
+    mel.connect_material_expressions(metal_s, "", sw_ms, "True"); mel.connect_material_expressions(metal_p, "", sw_ms, "False")
+    mel.connect_material_property(_e(m, E.MaterialExpressionScalarParameter, -450, 600, parameter_name="Specular",
+                                     default_value=0.5), "", MP.MP_SPECULAR)
+    # Cloth shading model: amount of sheen (fuzz colour = SubsurfaceColor). Unused by the other shading models here.
+    mel.connect_material_property(_e(m, E.MaterialExpressionScalarParameter, -450, 650, parameter_name="ClothFuzz",
+                                     default_value=0.0), "", MP.MP_CUSTOM_DATA0)
+
+    rough_src = sw_spec
     if rm_default:
         rm = _e(m, E.MaterialExpressionTextureSampleParameter2D, -1400, 650, parameter_name="RMAOS",
                 texture=rm_default, sampler_type=E.MaterialSamplerType.SAMPLERTYPE_MASKS)
         sw_r = _e(m, E.MaterialExpressionStaticSwitchParameter, -700, 450, parameter_name="HasRMAOS", default_value=False)
         mel.connect_material_expressions(rm, "R", sw_r, "True"); mel.connect_material_expressions(sw_spec, "", sw_r, "False")
-        zero = _e(m, E.MaterialExpressionConstant, -900, 750, r=0.0)
         one = _e(m, E.MaterialExpressionConstant, -900, 850, r=1.0)
         sw_m = _e(m, E.MaterialExpressionStaticSwitchParameter, -700, 700, parameter_name="HasRMAOS", default_value=False)
-        mel.connect_material_expressions(rm, "G", sw_m, "True"); mel.connect_material_expressions(zero, "", sw_m, "False")
+        mel.connect_material_expressions(rm, "G", sw_m, "True"); mel.connect_material_expressions(sw_ms, "", sw_m, "False")
         sw_ao = _e(m, E.MaterialExpressionStaticSwitchParameter, -700, 900, parameter_name="HasRMAOS", default_value=False)
         mel.connect_material_expressions(rm, "B", sw_ao, "True"); mel.connect_material_expressions(one, "", sw_ao, "False")
         mel.connect_material_property(sw_m, "", MP.MP_METALLIC)
         mel.connect_material_property(sw_ao, "", MP.MP_AMBIENT_OCCLUSION)
         rough_src = sw_r
+    else:
+        mel.connect_material_property(sw_ms, "", MP.MP_METALLIC)
 
     # wetness on upward-facing surfaces (damp: darker, semi-gloss) + mirror puddles with rain ripples on flat ground,
     # both faded out with distance so far terrain does not turn into a white sky reflection
@@ -216,27 +256,27 @@ def master():
     wc = _e(m, E.MaterialExpressionCustom, -950, -1100, code=WET_HLSL, output_type=E.CustomMaterialOutputType.CMOT_FLOAT3,
             description="WetPuddle")
     ins = []
-    for n in ("Wet", "Up", "Noise", "Depth", "Walls"):
+    for n in ("Wet", "Up", "Noise", "Depth", "Walls", "Resp", "Pud"):
         ci = E.CustomInput(); ci.set_editor_property("input_name", n); ins.append(ci)
     wc.set_editor_property("inputs", ins)
     mel.connect_material_expressions(wet, "", wc, "Wet"); mel.connect_material_expressions(up, "", wc, "Up")
     mel.connect_material_expressions(_e(m, E.MaterialExpressionScalarParameter, -1250, -1000, parameter_name="WetWalls",
                                         default_value=0.35), "", wc, "Walls")
+    mel.connect_material_expressions(_e(m, E.MaterialExpressionScalarParameter, -1250, -950, parameter_name="WetResponse",
+                                        default_value=1.0), "", wc, "Resp")
+    mel.connect_material_expressions(_e(m, E.MaterialExpressionScalarParameter, -1250, -900, parameter_name="Puddles",
+                                        default_value=1.0), "", wc, "Pud")
     mel.connect_material_expressions(pn, "RGB", wc, "Noise"); mel.connect_material_expressions(depth, "", wc, "Depth")
     wm = _e(m, E.MaterialExpressionComponentMask, -750, -1150, r=True, g=False, b=False, a=False)
     pud = _e(m, E.MaterialExpressionComponentMask, -750, -1050, r=False, g=True, b=False, a=False)
     dark = _e(m, E.MaterialExpressionComponentMask, -750, -950, r=False, g=False, b=True, a=False)
     for x in (wm, pud, dark):
         mel.connect_material_expressions(wc, "", x, "")
-    rough = _e(m, E.MaterialExpressionLinearInterpolate, -550, 400, const_b=0.3)
-    mel.connect_material_expressions(rough_src, "", rough, "A"); mel.connect_material_expressions(wm, "", rough, "Alpha")
-    roughp = _e(m, E.MaterialExpressionLinearInterpolate, -450, 450, const_b=0.02)
-    mel.connect_material_expressions(rough, "", roughp, "A"); mel.connect_material_expressions(pud, "", roughp, "Alpha")
-    rough = roughp
     # close-range grain so stretched Skyrim textures do not look smeared at the player's feet
     dtile = _e(m, E.MaterialExpressionScalarParameter, -1700, 1500, parameter_name="DetailTiling", default_value=8.0)
     duv = _e(m, E.MaterialExpressionMultiply, -1550, 1450)
-    mel.connect_material_expressions(_e(m, E.MaterialExpressionTextureCoordinate, -1700, 1400), "", duv, "A")
+    tc = _e(m, E.MaterialExpressionTextureCoordinate, -1700, 1400)
+    mel.connect_material_expressions(tc, "", duv, "A")
     mel.connect_material_expressions(dtile, "", duv, "B")
     dn = _e(m, E.MaterialExpressionTextureSampleParameter2D, -1400, 1400, parameter_name="DetailNormalMap",
             sampler_type=E.MaterialSamplerType.SAMPLERTYPE_NORMAL)
@@ -246,6 +286,37 @@ def master():
     if dn_t: dn.set_editor_property("texture", dn_t)
     if dc_t: dcol.set_editor_property("texture", dc_t)
     mel.connect_material_expressions(duv, "", dn, "UVs"); mel.connect_material_expressions(duv, "", dcol, "UVs")
+    # armor: second detail layer (metal) where the spec mask is high, first (leather) elsewhere; own static switch so
+    # only instances that turn it on pay for the two extra samplers
+    dtile2 = _e(m, E.MaterialExpressionScalarParameter, -1700, 2000, parameter_name="DetailTiling2", default_value=6.0)
+    duv2 = _e(m, E.MaterialExpressionMultiply, -1550, 1950)
+    mel.connect_material_expressions(tc, "", duv2, "A"); mel.connect_material_expressions(dtile2, "", duv2, "B")
+    dn2 = _e(m, E.MaterialExpressionTextureSampleParameter2D, -1400, 1950, parameter_name="DetailNormalMap2",
+             sampler_type=E.MaterialSamplerType.SAMPLERTYPE_NORMAL)
+    dc2 = _e(m, E.MaterialExpressionTextureSampleParameter2D, -1400, 2150, parameter_name="DetailColorMap2",
+             sampler_type=E.MaterialSamplerType.SAMPLERTYPE_LINEAR_COLOR)
+    if dn_t: dn2.set_editor_property("texture", dn_t)
+    if dc_t: dc2.set_editor_property("texture", dc_t)
+    mel.connect_material_expressions(duv2, "", dn2, "UVs"); mel.connect_material_expressions(duv2, "", dc2, "UVs")
+    dsplit = _e(m, E.MaterialExpressionCustom, -1150, 2050, code=DETAIL_SPLIT_HLSL, output_type=E.CustomMaterialOutputType.CMOT_FLOAT1,
+                description="DetailSplit")
+    ins = []
+    for n in ("S", "Split"):
+        ci = E.CustomInput(); ci.set_editor_property("input_name", n); ins.append(ci)
+    dsplit.set_editor_property("inputs", ins)
+    mel.connect_material_expressions(sp, "R", dsplit, "S")
+    mel.connect_material_expressions(_e(m, E.MaterialExpressionScalarParameter, -1400, 2300, parameter_name="DetailSplit",
+                                        default_value=0.5), "", dsplit, "Split")
+    ln = _e(m, E.MaterialExpressionLinearInterpolate, -1000, 1950)
+    mel.connect_material_expressions(dn, "RGB", ln, "A"); mel.connect_material_expressions(dn2, "RGB", ln, "B")
+    mel.connect_material_expressions(dsplit, "", ln, "Alpha")
+    lc = _e(m, E.MaterialExpressionLinearInterpolate, -1000, 2100)
+    mel.connect_material_expressions(dcol, "R", lc, "A"); mel.connect_material_expressions(dc2, "R", lc, "B")
+    mel.connect_material_expressions(dsplit, "", lc, "Alpha")
+    sw_dn = _e(m, E.MaterialExpressionStaticSwitchParameter, -850, 1950, parameter_name="SpecMaskedDetail", default_value=False)
+    mel.connect_material_expressions(ln, "", sw_dn, "True"); mel.connect_material_expressions(dn, "RGB", sw_dn, "False")
+    sw_dc = _e(m, E.MaterialExpressionStaticSwitchParameter, -850, 2100, parameter_name="SpecMaskedDetail", default_value=False)
+    mel.connect_material_expressions(lc, "", sw_dc, "True"); mel.connect_material_expressions(dcol, "R", sw_dc, "False")
     dstr = _e(m, E.MaterialExpressionScalarParameter, -1400, 1800, parameter_name="DetailStrength", default_value=0.6)
     dnc = _e(m, E.MaterialExpressionCustom, -1100, 1400, code=DETAIL_NORMAL_HLSL, output_type=E.CustomMaterialOutputType.CMOT_FLOAT3,
              description="DetailNormal")
@@ -257,13 +328,33 @@ def master():
             ci = E.CustomInput(); ci.set_editor_property("input_name", n); ins.append(ci)
         node.set_editor_property("inputs", ins)
         mel.connect_material_expressions(depth, "", node, "Depth"); mel.connect_material_expressions(dstr, "", node, "S")
-    mel.connect_material_expressions(nm, "RGB", dnc, "Nm"); mel.connect_material_expressions(dn, "RGB", dnc, "Dn")
-    mel.connect_material_expressions(dcol, "R", dcc, "Dc")
+    mel.connect_material_expressions(nm, "RGB", dnc, "Nm"); mel.connect_material_expressions(sw_dn, "", dnc, "Dn")
+    mel.connect_material_expressions(sw_dc, "", dcc, "Dc")
     dark2 = _e(m, E.MaterialExpressionMultiply, -600, -950)
     mel.connect_material_expressions(dark, "", dark2, "A"); mel.connect_material_expressions(dcc, "", dark2, "B")
 
-    base = _e(m, E.MaterialExpressionMultiply, -450, -300)
-    mel.connect_material_expressions(bc, "RGB", base, "A"); mel.connect_material_expressions(dark2, "", base, "B")
+    drn = _e(m, E.MaterialExpressionCustom, -700, 400, code=DETAIL_ROUGH_HLSL, output_type=E.CustomMaterialOutputType.CMOT_FLOAT1,
+             description="DetailRoughness")
+    ins = []
+    for n in ("R", "Dc", "Depth", "S", "DR"):
+        ci = E.CustomInput(); ci.set_editor_property("input_name", n); ins.append(ci)
+    drn.set_editor_property("inputs", ins)
+    mel.connect_material_expressions(rough_src, "", drn, "R"); mel.connect_material_expressions(sw_dc, "", drn, "Dc")
+    mel.connect_material_expressions(depth, "", drn, "Depth"); mel.connect_material_expressions(dstr, "", drn, "S")
+    mel.connect_material_expressions(_e(m, E.MaterialExpressionScalarParameter, -900, 250, parameter_name="DetailRoughness",
+                                        default_value=0.0), "", drn, "DR")
+    rough = _e(m, E.MaterialExpressionLinearInterpolate, -550, 400, const_b=0.3)
+    mel.connect_material_expressions(drn, "", rough, "A"); mel.connect_material_expressions(wm, "", rough, "Alpha")
+    roughp = _e(m, E.MaterialExpressionLinearInterpolate, -450, 450, const_b=0.02)
+    mel.connect_material_expressions(rough, "", roughp, "A"); mel.connect_material_expressions(pud, "", roughp, "Alpha")
+    rough = roughp
+
+    base0 = _e(m, E.MaterialExpressionMultiply, -500, -300)
+    mel.connect_material_expressions(bc, "RGB", base0, "A"); mel.connect_material_expressions(dark2, "", base0, "B")
+    base = _e(m, E.MaterialExpressionMultiply, -400, -300)       # BaseTint: eyes / mouths have no occlusion and read too bright
+    mel.connect_material_expressions(base0, "", base, "A")
+    mel.connect_material_expressions(_e(m, E.MaterialExpressionVectorParameter, -600, -250, parameter_name="BaseTint",
+                                        default_value=unreal.LinearColor(1, 1, 1, 1)), "", base, "B")
 
     # puddle surface normal: flat water with two crossing ripple layers (Skyrim's water normal map) that strengthen with rain
     wn = _import_tex("skywater_n", "normal")
@@ -298,8 +389,12 @@ def master():
     mel.connect_material_expressions(upc, "", sm1, "")
     sm2 = _e(m, E.MaterialExpressionSaturate, -900, -800)
     mel.connect_material_expressions(sm1, "", sm2, "")
-    smask0 = _e(m, E.MaterialExpressionMultiply, -800, -850)
-    mel.connect_material_expressions(snow, "", smask0, "A"); mel.connect_material_expressions(sm2, "", smask0, "B")
+    smask00 = _e(m, E.MaterialExpressionMultiply, -850, -850)
+    mel.connect_material_expressions(snow, "", smask00, "A"); mel.connect_material_expressions(sm2, "", smask00, "B")
+    smask0 = _e(m, E.MaterialExpressionMultiply, -750, -850)     # SnowCover: NPC skin/eyes 0, shoulders of cloaks some
+    mel.connect_material_expressions(smask00, "", smask0, "A")
+    mel.connect_material_expressions(_e(m, E.MaterialExpressionScalarParameter, -900, -750, parameter_name="SnowCover",
+                                        default_value=1.0), "", smask0, "B")
     # mountains/cliffs/rocks: permanent snow on upward faces above the snowline (Skyrim projects snow onto its mountains)
     alt = _e(m, E.MaterialExpressionCustom, -950, -1700, code=ALT_SNOW_HLSL, output_type=E.CustomMaterialOutputType.CMOT_FLOAT1,
              description="AltitudeSnow")
@@ -326,8 +421,9 @@ def master():
     mel.connect_material_expressions(rough, "", rough2, "A"); mel.connect_material_expressions(smask, "", rough2, "Alpha")
     mel.connect_material_property(rough2, "", MP.MP_ROUGHNESS)
 
-    # foliage translucency colour (only used by the two-sided foliage shading model)
-    tint = _e(m, E.MaterialExpressionConstant3Vector, -650, -150, constant=unreal.LinearColor(1.6, 1.7, 0.9, 1.0))
+    # SubsurfaceColor = base x SubsurfaceTint: foliage translucency (default), hair-card transmission, cloth fuzz colour
+    tint = _e(m, E.MaterialExpressionVectorParameter, -650, -150, parameter_name="SubsurfaceTint",
+              default_value=unreal.LinearColor(1.6, 1.7, 0.9, 1.0))
     sss = _e(m, E.MaterialExpressionMultiply, -450, -100)
     mel.connect_material_expressions(bc, "RGB", sss, "A"); mel.connect_material_expressions(tint, "", sss, "B")
     mel.connect_material_property(sss, "", MP.MP_SUBSURFACE_COLOR)
@@ -619,34 +715,162 @@ def instance_for(key):
 BLEND_LAYERS = {"wrfieldgrass01", "rocks01", "road01", "dirt02", "wrcitywalltopcap01", "woodedgetrim01"}
 
 
-def npc_cloth(mi):
-    """Clothes / armor / leather: woven-fabric close-range detail (tools/fabric_detail.py) instead of the generic grit,
-    which looked like photocopier noise on cloth. Re-runnable."""
-    fn, fc = _import_tex("fabric_n", "normal"), _import_tex("fabric", "linear")
-    if fn is None or fc is None:
-        return
+# ---------------------------------------------------------------- NPC / gear / creature materials
+# Kind per texture (cloth, leather, leather_armor, metal_armor, skin, eye, hair, creature_* ...) and its settings live in
+# npc_material_types.py (pure Python; tools/npc_material_coverage.py checks it offline). Detail textures: tools/*_detail.py.
+
+# Subsurface profiles, relative to the engine's default Burley skin: mfp_scale shortens the scattering distance (Skyrim
+# heads at the default read waxy), transmission_tint = colour of light through ears / fingers, albedo_tint = surface tint.
+SKIN_PROFILES = {
+    "SP_SkySkin": dict(mfp_scale=0.8, albedo_tint=(1.0, 1.0, 1.0), transmission_tint=(1.0, 0.85, 0.75)),
+    "SP_SkySkinBeast": dict(mfp_scale=0.45, albedo_tint=(1.0, 1.05, 1.1), transmission_tint=(0.8, 0.75, 0.7)),
+}
+_SHADING = {"cloth": "MSM_CLOTH", "skin": "MSM_SUBSURFACE_PROFILE", "foliage": "MSM_TWO_SIDED_FOLIAGE"}
+_npc_state = {"master": False}
+
+
+def skin_profile(name):
+    """/Game/Area2Tex/<name> SubsurfaceProfile (SKIN_PROFILES), created on first use; None if this engine cannot create one."""
+    path = DEST + "/" + name
+    if eal.does_asset_exist(path):
+        return unreal.load_asset(path)
+    if not hasattr(unreal, "SubsurfaceProfileFactory"):
+        log("no SubsurfaceProfileFactory: %s not created, skin keeps the engine default profile" % name)
+        return None
+    cfg = SKIN_PROFILES[name]
     try:
-        mel.set_material_instance_texture_parameter_value(mi, "DetailNormalMap", fn)
-        mel.set_material_instance_texture_parameter_value(mi, "DetailColorMap", fc)
-        mel.set_material_instance_scalar_parameter_value(mi, "DetailTiling", 14.0)
-        mel.set_material_instance_scalar_parameter_value(mi, "DetailStrength", 0.7)
+        sp = at.create_asset(name, DEST, unreal.SubsurfaceProfile, unreal.SubsurfaceProfileFactory())
+        s = sp.get_editor_property("settings")
+    except Exception as e:
+        log("subsurface profile %s: %s" % (name, e))
+        return None
+    try:
+        s.set_editor_property("mean_free_path_distance", s.get_editor_property("mean_free_path_distance") * cfg["mfp_scale"])
+    except Exception as e:
+        log("%s mean_free_path_distance: %s" % (name, e))
+    for prop, t in (("surface_albedo", cfg["albedo_tint"]), ("transmission_tint_color", cfg["transmission_tint"])):
+        try:
+            c = s.get_editor_property(prop)
+            s.set_editor_property(prop, unreal.LinearColor(c.r * t[0], c.g * t[1], c.b * t[2], c.a))
+        except Exception as e:
+            log("%s %s: %s" % (name, prop, e))
+    sp.set_editor_property("settings", s)
+    eal.save_loaded_asset(sp)
+    return sp
+
+
+def _switch_on(mi, name):
+    try:
+        return bool(mel.get_material_instance_static_switch_parameter_value(mi, name))
+    except Exception:
+        return False
+
+
+def _profile_overrides(o, kind):
+    """Shading model / blend overrides of an NPC kind, written into a base_property_overrides struct (caller stores it)."""
+    p = nmt.PROFILES[kind]
+    sm = _SHADING.get(p["shading"])
+    if sm:
+        o.set_editor_property("override_shading_model", True)
+        o.set_editor_property("shading_model", getattr(unreal.MaterialShadingModel, sm))
+    else:
+        o.set_editor_property("override_shading_model", False)      # e.g. eyes that npc_hair had made foliage cards
+    if p["opaque"]:
+        o.set_editor_property("override_blend_mode", True); o.set_editor_property("blend_mode", unreal.BlendMode.BLEND_OPAQUE)
+    if p["shading"] == "foliage":                                    # hair / brow / lash cards: see npc_hair
+        o.set_editor_property("override_blend_mode", True); o.set_editor_property("blend_mode", unreal.BlendMode.BLEND_MASKED)
+        o.set_editor_property("override_two_sided", True); o.set_editor_property("two_sided", True)
+        o.set_editor_property("override_opacity_mask_clip_value", True); o.set_editor_property("opacity_mask_clip_value", 0.4)
+
+
+def _profile_params(mi, kind):
+    """Every M_SkyMaster parameter of an NPC kind (roughness range, metal, detail layers, weather response, SSS profile)."""
+    p = nmt.PROFILES[kind]
+    S = mel.set_material_instance_scalar_parameter_value
+    V = mel.set_material_instance_vector_parameter_value
+    T = mel.set_material_instance_texture_parameter_value
+    has_spec = _switch_on(mi, "HasSpec")
+    strength = p["strength"] if p["detail"] else 0.0
+    if p["detail"]:
+        dn, dc = _import_tex(p["detail"] + "_n", "normal"), _import_tex(p["detail"], "linear")
+        if dn and dc:
+            T(mi, "DetailNormalMap", dn); T(mi, "DetailColorMap", dc)
+        else:
+            log("detail texture %s missing (run tools/*_detail.py); %s keeps the default grain" % (p["detail"], mi.get_name()))
+    mixed = bool(p["detail2"]) and has_spec                          # the split reads the Spec map
+    if mixed:
+        dn2, dc2 = _import_tex(p["detail2"] + "_n", "normal"), _import_tex(p["detail2"], "linear")
+        mixed = bool(dn2 and dc2)
+        if mixed:
+            T(mi, "DetailNormalMap2", dn2); T(mi, "DetailColorMap2", dc2)
+            S(mi, "DetailTiling2", p["tiling2"]); S(mi, "DetailSplit", p["split"])
+    if mixed or _switch_on(mi, "SpecMaskedDetail"):                 # only touch the switch when needed (permutations)
+        mel.set_material_instance_static_switch_parameter_value(mi, "SpecMaskedDetail", mixed)
+    metal = p["metal"]
+    if not has_spec and not _switch_on(mi, "HasRMAOS"):             # no mask to find the metal parts: tone it down
+        metal = {"metal_armor": metal * 0.45, "leather_armor": 0.0}.get(kind, metal)
+    for name, value in (("DetailTiling", p["tiling"]), ("DetailStrength", strength), ("RoughnessMatte", p["rough"][0]),
+                        ("RoughnessGloss", p["rough"][1]), ("DefaultRoughness", p["flat"]), ("DetailRoughness", p["detail_rough"]),
+                        ("Metalness", metal), ("Specular", p["specular"]), ("ClothFuzz", p["fuzz"]),
+                        ("WetResponse", p["wet"]), ("Puddles", p["puddles"]), ("SnowCover", p["snow"])):
+        S(mi, name, float(value))
+    b = p["base_tint"]
+    V(mi, "BaseTint", unreal.LinearColor(b, b, b, 1.0))
+    if p["sss_tint"]:
+        V(mi, "SubsurfaceTint", unreal.LinearColor(p["sss_tint"][0], p["sss_tint"][1], p["sss_tint"][2], 1.0))
+    if p["sss_profile"]:
+        prof = skin_profile(p["sss_profile"])
+        if prof:
+            try:
+                mi.set_editor_property("override_subsurface_profile", True)
+                mi.set_editor_property("subsurface_profile", prof)
+            except Exception as e:
+                log("subsurface profile on %s: %s" % (mi.get_name(), e))
+
+
+def npc_kind(name):
+    """Material kind for a texture key, slot name or Skyrim texture path (npc_material_types.classify)."""
+    return nmt.classify(name, AREA)[0]
+
+
+def npc_material(mi, slot=None, default=None):
+    """Apply the NPC material profile to MI_<key>: kind from the mesh slot (Skyrim texture path) when given, else from the
+    key; `default` replaces the cloth fallback when nothing matched. Re-runnable. Returns the kind (None = not an M_SkyMaster MI)."""
+    if not isinstance(mi, unreal.MaterialInstanceConstant):
+        return None
+    if not _npc_state["master"]:
+        master()                                                     # rebuilds an outdated graph once, before setting new params
+        _npc_state["master"] = True
+    parent = mi.get_editor_property("parent")
+    if parent is None or parent.get_name() != "M_SkyMaster":
+        return None
+    key = mi.get_name()[3:] if mi.get_name().startswith("MI_") else mi.get_name()
+    kind, rule = nmt.classify(slot or key, AREA)
+    if rule == nmt.FALLBACK and slot:
+        kind, rule = nmt.classify(key, AREA)
+    if rule == nmt.FALLBACK and default:
+        kind = default
+    try:
+        o = mi.get_editor_property("base_property_overrides")
+        _profile_overrides(o, kind)
+        mi.set_editor_property("base_property_overrides", o)
+        _profile_params(mi, kind)
         mel.update_material_instance(mi)
         eal.save_loaded_asset(mi)
     except Exception as e:
-        log("npc_cloth failed: %s" % e)
+        log("npc material %s (%s) failed: %s" % (mi.get_name(), kind, e))
+    return kind
+
+
+def npc_cloth(mi, slot=None):
+    """Clothes / armor / leather / creatures (everything npc_live does not call skin or a hair card): kind-specific material."""
+    return npc_material(mi, slot, default="cloth")
 
 
 def configure(mi, key):
     """Blend mode / shading model / decal settings from the texture lists (re-runnable on existing instances)."""
     k = key.lower()
-    npc_tex = os.path.join(AREA, "npc", "tex", k + ".png")
-    if os.path.exists(npc_tex):
-        # NPC armor and face textures are often stretched across a large UV island.
-        # A stronger close-range detail layer restores cloth and leather relief without
-        # increasing the global texture pool.
-        mel.set_material_instance_scalar_parameter_value(mi, "DetailTiling", 11.0)
-        mel.set_material_instance_scalar_parameter_value(mi, "DetailStrength", 0.82)
-        mel.set_material_instance_scalar_parameter_value(mi, "DefaultRoughness", 0.68)
+    kind = npc_kind(k) if nmt.is_npc_key(k, AREA) else None          # NPC / creature texture: per-material profile
     layer = k in BLEND_LAYERS
     decal = k in _lines("decal_textures.txt") and not layer
     extra = k in _lines("alpha_masked_extra.txt")                 # tools/fill_textures.py (colour maps the converter missed)
@@ -665,7 +889,11 @@ def configure(mi, key):
             o.set_editor_property("shading_model", unreal.MaterialShadingModel.MSM_TWO_SIDED_FOLIAGE)
         except Exception as e:
             log("shading model override: %s" % e)
+    if kind:
+        _profile_overrides(o, kind)
     mi.set_editor_property("base_property_overrides", o)
+    if kind:
+        _profile_params(mi, kind)
     if decal:                                                      # only override when needed: each override is a shader permutation
         mel.set_material_instance_static_switch_parameter_value(mi, "IsDecal", True)
     if any(s in k for s in ("mountain", "cliff", "rock")) and not k.startswith("lodtex_"):
@@ -675,7 +903,12 @@ def configure(mi, key):
 
 
 def npc_hair(mi):
-    """Hair / brow / lash cards: two-sided cut-out with back-lit transmission (one-sided cards vanish from behind)."""
+    """Hair / brow / lash cards: two-sided cut-out with back-lit transmission (one-sided cards vanish from behind).
+    NPC textures get their kind's profile instead: eyes (which npc_live sends here too) become opaque glossy eyes, cards get
+    warm hair transmission instead of the green foliage tint. Grass cards (grass_live) keep the plain card setup."""
+    key = mi.get_name()[3:] if mi.get_name().startswith("MI_") else mi.get_name()
+    if nmt.is_npc_key(key, AREA) and npc_material(mi, default="hair"):
+        return
     o = mi.get_editor_property("base_property_overrides")
     o.set_editor_property("override_blend_mode", True); o.set_editor_property("blend_mode", unreal.BlendMode.BLEND_MASKED)
     o.set_editor_property("override_two_sided", True); o.set_editor_property("two_sided", True)
@@ -687,13 +920,29 @@ def npc_hair(mi):
     eal.save_loaded_asset(mi)
 
 
+# Strand-to-strand variation: the grain texture stretched along the strands (V), so neighbouring strands differ slightly in
+# brightness (Var) and roughness, instead of one flat dyed colour. G = grain value (0.5 = neutral).
+HAIR_VAR_HLSL = "return lerp(1.0 - Var, 1.0 + Var, G);"
+HAIR_ROUGH_HLSL = "return saturate(R + (0.5 - G) * 0.2);"
+
+
 def hair_material():
     """M_SkyHair: NPC hair cards with UE's Hair shading model (anisotropic strand highlights + scatter), dithered cut-out,
-    base colour = grey Skyrim hair texture x Tint (the NPC's hair colour, tools/npc_hair_tint.py). Strands run along V."""
+    base colour = grey Skyrim hair texture x Tint (the NPC's hair colour, tools/npc_hair_tint.py) x per-strand variation.
+    Strands run along V. An older graph (no StrandVariation) is rebuilt in place; MI_hair_* instances keep their parent."""
     path = DEST + "/M_SkyHair"
     if eal.does_asset_exist(path):
-        return unreal.load_asset(path)
-    m = at.create_asset("M_SkyHair", DEST, unreal.Material, unreal.MaterialFactoryNew())
+        m = unreal.load_asset(path)
+        try:
+            if "StrandVariation" in [str(n) for n in mel.get_scalar_parameter_names(m)]:
+                return m
+        except Exception as e:
+            log("M_SkyHair parameter check failed, keeping the existing graph: %s" % e)
+            return m
+        mel.delete_all_material_expressions(m)
+        log("upgrading M_SkyHair graph")
+    else:
+        m = at.create_asset("M_SkyHair", DEST, unreal.Material, unreal.MaterialFactoryNew())
     E = unreal
     m.set_editor_property("blend_mode", unreal.BlendMode.BLEND_MASKED)
     m.set_editor_property("shading_model", unreal.MaterialShadingModel.MSM_HAIR)
@@ -706,13 +955,37 @@ def hair_material():
     tint = _e(m, E.MaterialExpressionVectorParameter, -900, 50, parameter_name="Tint", default_value=unreal.LinearColor(1, 1, 1, 1))
     mul = _e(m, E.MaterialExpressionMultiply, -600, -150)
     mel.connect_material_expressions(bc, "RGB", mul, "A"); mel.connect_material_expressions(tint, "", mul, "B")
-    mel.connect_material_property(mul, "", MP.MP_BASE_COLOR)
+    rough_p = _e(m, E.MaterialExpressionScalarParameter, -600, 400, parameter_name="Roughness", default_value=0.45)
+    var_p = _e(m, E.MaterialExpressionScalarParameter, -900, 500, parameter_name="StrandVariation", default_value=0.15)
+    grain = _import_tex("detailgrain", "linear")
+    base_out, rough_out = mul, rough_p
+    if grain:
+        uv = _e(m, E.MaterialExpressionTextureCoordinate, -1100, 350, u_tiling=40.0, v_tiling=1.5)
+        g = _e(m, E.MaterialExpressionTextureSample, -900, 350, texture=grain, sampler_type=E.MaterialSamplerType.SAMPLERTYPE_LINEAR_COLOR)
+        mel.connect_material_expressions(uv, "", g, "UVs")
+        hv = _e(m, E.MaterialExpressionCustom, -600, -50, code=HAIR_VAR_HLSL, output_type=E.CustomMaterialOutputType.CMOT_FLOAT1,
+                description="StrandVariation")
+        hr = _e(m, E.MaterialExpressionCustom, -400, 400, code=HAIR_ROUGH_HLSL, output_type=E.CustomMaterialOutputType.CMOT_FLOAT1,
+                description="StrandRoughness")
+        for node, names in ((hv, ("G", "Var")), (hr, ("G", "R"))):
+            ins = []
+            for n in names:
+                ci = E.CustomInput(); ci.set_editor_property("input_name", n); ins.append(ci)
+            node.set_editor_property("inputs", ins)
+            mel.connect_material_expressions(g, "R", node, "G")
+        mel.connect_material_expressions(var_p, "", hv, "Var"); mel.connect_material_expressions(rough_p, "", hr, "R")
+        base_out = _e(m, E.MaterialExpressionMultiply, -400, -150)
+        mel.connect_material_expressions(mul, "", base_out, "A"); mel.connect_material_expressions(hv, "", base_out, "B")
+        rough_out = hr
+    mel.connect_material_property(base_out, "", MP.MP_BASE_COLOR)
     mel.connect_material_property(bc, "A", MP.MP_OPACITY_MASK)
     tan = _e(m, E.MaterialExpressionConstant3Vector, -600, 100, constant=unreal.LinearColor(0, 1, 0, 0))
     mel.connect_material_property(tan, "", MP.MP_NORMAL)                 # Hair model: Normal input is the strand tangent
     mel.connect_material_property(_e(m, E.MaterialExpressionScalarParameter, -600, 200, parameter_name="Scatter", default_value=0.5), "", MP.MP_METALLIC)
     mel.connect_material_property(_e(m, E.MaterialExpressionScalarParameter, -600, 300, parameter_name="Specular", default_value=0.4), "", MP.MP_SPECULAR)
-    mel.connect_material_property(_e(m, E.MaterialExpressionScalarParameter, -600, 400, parameter_name="Roughness", default_value=0.45), "", MP.MP_ROUGHNESS)
+    mel.connect_material_property(rough_out, "", MP.MP_ROUGHNESS)
+    # Hair model: CustomData0 = Backlit (light through the cards from behind: the rim glow of sun-lit hair)
+    mel.connect_material_property(_e(m, E.MaterialExpressionScalarParameter, -600, 500, parameter_name="Backlit", default_value=0.6), "", MP.MP_CUSTOM_DATA0)
     mel.recompile_material(m)
     eal.save_loaded_asset(m)
     return m
@@ -737,11 +1010,12 @@ def hair_instance(key, tint):
     return mi
 
 
-def npc_skin(mi):
-    """Body / head / hands: subsurface-profile skin (engine default Burley profile)."""
-    o = mi.get_editor_property("base_property_overrides")
-    if o.get_editor_property("shading_model") == unreal.MaterialShadingModel.MSM_SUBSURFACE_PROFILE and o.get_editor_property("override_shading_model"):
+def npc_skin(mi, slot=None):
+    """Body / head / hands: subsurface-profile skin (SP_SkySkin, beast races SP_SkySkinBeast) with pore detail
+    (tools/skin_detail.py), skin roughness/specular, no snow and little wet darkening. Mouths get the wet mouth profile."""
+    if npc_material(mi, slot, default="skin"):
         return
+    o = mi.get_editor_property("base_property_overrides")
     o.set_editor_property("override_shading_model", True)
     o.set_editor_property("shading_model", unreal.MaterialShadingModel.MSM_SUBSURFACE_PROFILE)
     mi.set_editor_property("base_property_overrides", o)
@@ -815,7 +1089,7 @@ def nanite_landscape():
 def ensure_usage(m):
     """Set usage flags up front; otherwise every instance sets them at runtime and dirties/recompiles the master."""
     changed = False
-    for flag in ("used_with_nanite", "used_with_instanced_static_meshes"):
+    for flag in ("used_with_nanite", "used_with_instanced_static_meshes", "used_with_skeletal_mesh"):   # skeletal: NPCs
         try:
             if not m.get_editor_property(flag):
                 m.set_editor_property(flag, True); changed = True

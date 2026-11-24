@@ -1,0 +1,12 @@
+wrbuildingslod01
+wrbuildingslod02
+wrcastlecarpets01
+wrcastlelod01
+wrchbanner01
+wrcitywalltopcap01
+wrdoor01
+wrdoor02
+wrdragontile01
+wrplasterdecals
+wrtrellisvines01
+wrwoodplanks03

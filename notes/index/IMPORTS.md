@@ -1,0 +1,204 @@
+# Project imports (exact for static `import x`; dynamic imports/exec are not seen)
+
+## who imports whom
+- area2/apply_dt.py  ->  start_bridge.py
+- area2/fix_audit2.py  ->  unreal/SkyBridge/ue_assets.py
+- area2/fix_npc_mats.py  ->  unreal/SkyBridge/remaster_materials.py
+- area2/hot_atmos.py  ->  unreal/SkyBridge/atmosphere.py
+- area2/hot_memgov.py  ->  unreal/SkyBridge/memory_governor.py
+- area2/memgov_dry.py  ->  unreal/SkyBridge/memory_governor.py
+- area2/npc_live_before_cursor.py  ->  unreal/SkyBridge/live_bridge.py, unreal/SkyBridge/remaster_materials.py, unreal/SkyBridge/ue_assets.py
+- area2/npc_live_before_cursor_frozen.py  ->  unreal/SkyBridge/live_bridge.py, unreal/SkyBridge/remaster_materials.py, unreal/SkyBridge/ue_assets.py
+- area2/patch_rain_occ.py  ->  unreal/SkyBridge/remaster_materials.py
+- area2/probe_bake.py  ->  tools/tamriel_terrain.py
+- area2/probe_btr.py  ->  tools/bsa.py, tools/nif2obj.py
+- area2/probe_gpu.py  ->  unreal/SkyBridge/live_bridge.py
+- area2/probe_lod.py  ->  tools/bsa.py
+- area2/probe_npc.py  ->  unreal/SkyBridge/live_bridge.py
+- area2/probe_stream_limbs.py  ->  unreal/SkyBridge/npc_live.py
+- area2/sbperf_start.py  ->  unreal/SkyBridge/atmosphere.py
+- area2/tam_test1.py  ->  unreal/SkyBridge/tamriel_live.py
+- area2/test_npc_frozen.py  ->  unreal/SkyBridge/npc_live.py
+- remaster_watch.py  ->  start_bridge.py
+- tools/asset_service.py  ->  tools/mesh_index.py
+- tools/capture_window.py  ->  start_bridge.py
+- tools/debug/npc_creature_diag.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_creature_test.py  ->  unreal/SkyBridge/live_bridge.py, unreal/SkyBridge/npc_live.py
+- tools/debug/npc_diag.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_diag2.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_diag3.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_dump_rest.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_names.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_reload.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_try.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_view.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_view2.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_view3.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/npc_view_cow.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/walk_check.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/walk_check_lib.py  ->  unreal/SkyBridge/npc_live.py
+- tools/debug/walk_watch.py  ->  tools/debug/walk_check_lib.py
+- tools/editor_watchdog.py  ->  play.py
+- tools/fill_textures.py  ->  tools/bsa.py
+- tools/find_decals.py  ->  tools/nif2obj.py
+- tools/find_lod.py  ->  tools/bsa.py
+- tools/find_tex.py  ->  tools/bsa.py
+- tools/gpu_profile.py  ->  start_bridge.py
+- tools/grass_placement.py  ->  tools/bsa.py, tools/distant_world.py, tools/nif2obj.py
+- tools/grass_world.py  ->  tools/bsa.py
+- tools/land_terrain.py  ->  tools/bsa.py
+- tools/lod_objects.py  ->  tools/bsa.py, tools/nif2obj.py
+- tools/lod_terrain.py  ->  tools/bsa.py, tools/nif2obj.py
+- tools/max_quality.py  ->  start_bridge.py
+- tools/mesh_index.py  ->  tools/bsa.py
+- tools/nif2obj.py  ->  tools/npc_skin.py
+- tools/npc_extract.py  ->  tools/bsa.py
+- tools/npc_hair_tint.py  ->  tools/nif2obj.py
+- tools/npc_skin.py  ->  tools/nif2obj.py
+- tools/npc_tex_alias.py  ->  tools/bsa.py
+- tools/perf_profile.py  ->  start_bridge.py
+- tools/photo_keys.py  ->  start_bridge.py
+- tools/projected_snow.py  ->  tools/nif2obj.py
+- tools/set_cvar.py  ->  start_bridge.py
+- tools/showcase_shot.py  ->  start_bridge.py
+- tools/sky_extras.py  ->  start_bridge.py
+- tools/tamriel_terrain.py  ->  tools/bsa.py, tools/tamriel_world.py
+- tools/tamriel_world.py  ->  tools/distant_world.py
+- tools/ue_run.py  ->  start_bridge.py
+- tools/water_flow.py  ->  tools/distant_world.py
+- tools/water_flow_run.py  ->  unreal/SkyBridge/water_flow_apply.py
+- tools/weatherfx_build.py  ->  unreal/SkyBridge/weather_fx.py
+- tools/weatherfx_splash.py  ->  unreal/SkyBridge/weather_fx.py
+- tools/weatherfx_test.py  ->  unreal/SkyBridge/weather_fx.py
+- unreal/SkyBridge/grass_live.py  ->  unreal/SkyBridge/remaster_materials.py
+- unreal/SkyBridge/live_bridge.py  ->  unreal/SkyBridge/atmosphere.py, unreal/SkyBridge/memory_governor.py, unreal/SkyBridge/npc_live.py, unreal/SkyBridge/remaster_materials.py, unreal/SkyBridge/tamriel_live.py, unreal/SkyBridge/ue_assets.py, unreal/SkyBridge/water_flow_apply.py
+- unreal/SkyBridge/npc_live.py  ->  unreal/SkyBridge/live_bridge.py, unreal/SkyBridge/remaster_materials.py, unreal/SkyBridge/ue_assets.py
+- unreal/SkyBridge/offline_import.py  ->  unreal/SkyBridge/npc_live.py, unreal/SkyBridge/ue_assets.py
+- unreal/SkyBridge/remaster_materials.py  ->  unreal/SkyBridge/ue_assets.py, unreal/SkyBridge/water_flow_apply.py
+- unreal/SkyBridge/tamriel_live.py  ->  unreal/SkyBridge/live_bridge.py, unreal/SkyBridge/remaster_materials.py, unreal/SkyBridge/ue_assets.py
+- unreal/SkyBridge/ue_assets.py  ->  unreal/SkyBridge/remaster_materials.py
+
+## python files nobody imports and no .bat/.md mentions (candidates: scripts run by hand, or dead code)
+- area2/apply_dt.py
+- area2/cap_root.py
+- area2/check_npc_mod.py
+- area2/fix_audit.py
+- area2/fix_audit2.py
+- area2/fix_detail.py
+- area2/fix_dup.py
+- area2/fix_interior.py
+- area2/fix_interior2.py
+- area2/fix_night.py
+- area2/fix_npc_mats.py
+- area2/fix_prefetch.py
+- area2/fix_trees.py
+- area2/fix_water_nanite.py
+- area2/fix_wet.py
+- area2/gpu_prof.py
+- area2/hot_atmos.py
+- area2/hot_memgov.py
+- area2/list_windows.py
+- area2/memgov_dry.py
+- area2/memrep.py
+- area2/night_test.py
+- area2/patch_rain_occ.py
+- area2/preview_sky.py
+- area2/probe.py
+- area2/probe_arms.py
+- area2/probe_arms2.py
+- area2/probe_arms3.py
+- area2/probe_arms4.py
+- area2/probe_arms5.py
+- area2/probe_bake.py
+- area2/probe_bounds.py
+- area2/probe_btr.py
+- area2/probe_caps.py
+- area2/probe_cmp.py
+- area2/probe_dup.py
+- area2/probe_fog.py
+- area2/probe_gpu.py
+- area2/probe_ground.py
+- area2/probe_hist.py
+- area2/probe_light_props.py
+- area2/probe_limbs_live.py
+- area2/probe_lod.py
+- area2/probe_np.py
+- area2/probe_npc.py
+- area2/probe_npc2.py
+- area2/probe_npc3.py
+- area2/probe_npc_mats.py
+- area2/probe_perf.py
+- area2/probe_pf.py
+- area2/probe_plan.py
+- area2/probe_pose_cost.py
+- area2/probe_pose_rate.py
+- area2/probe_rain_mine.py
+- area2/probe_refresh.py
+- area2/probe_refresh2.py
+- area2/probe_render2.py
+- area2/probe_render_pose.py
+- area2/probe_rot.py
+- area2/probe_scale.py
+- area2/probe_sky.py
+- area2/probe_smooth.py
+- area2/probe_sp.py
+- area2/probe_state.py
+- area2/probe_tex.py
+- area2/probe_vis.py
+- area2/probe_water_nanite.py
+- area2/prof_npc.py
+- area2/prof_npc2.py
+- area2/quit_editor.py
+- area2/sbperf_cprof.py
+- area2/sbperf_csv.py
+- area2/sbperf_long.py
+- area2/sbperf_start.py
+- area2/swap_reset.py
+- area2/tam_test1.py
+- area2/test_interior.py
+- area2/test_npc_frozen.py
+- area2/test_refpose.py
+- area2/undo_rain_mine.py
+- tools/check_rotation.py
+- tools/check_tex_keys.py
+- tools/debug/npc_api.py
+- tools/debug/npc_creature_diag.py
+- tools/debug/npc_creature_test.py
+- tools/debug/npc_diag.py
+- tools/debug/npc_diag2.py
+- tools/debug/npc_diag3.py
+- tools/debug/npc_dump_rest.py
+- tools/debug/npc_names.py
+- tools/debug/npc_probe.py
+- tools/debug/npc_reload.py
+- tools/debug/npc_try.py
+- tools/debug/npc_view.py
+- tools/debug/npc_view2.py
+- tools/debug/npc_view3.py
+- tools/debug/npc_view_cow.py
+- tools/debug/walk_watch.py
+- tools/debug/water_diag.py
+- tools/debug/water_recompile.py
+- tools/debug/water_view.py
+- tools/esm_water.py
+- tools/find_lod.py
+- tools/find_tex.py
+- tools/gpu_profile.py
+- tools/make_project_index.py
+- tools/perf_gpu_share.py
+- tools/perf_profile.py
+- tools/shutdown_after_import.py
+- tools/sky_extras.py
+- tools/skyrim_lightweight.py
+- tools/verify_models.py
+- tools/verify_unreal.py
+- tools/weatherfx_build.py
+- tools/weatherfx_check.py
+- tools/weatherfx_splash.py
+- tools/weatherfx_test.py
+- unreal/SkyBridge/audit_slots.py
+- unreal/SkyBridge/fire_fx.py
+- unreal/SkyBridge/mountain_mist.py
+- unreal/SkyBridge/night_sky.py
+- unreal/SkyBridge/probe_bounds.py
+- unreal/SkyBridge/water_setup.py

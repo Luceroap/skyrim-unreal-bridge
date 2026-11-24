@@ -1,0 +1,1 @@
+import unreal; e=unreal.EditorAssetLibrary; print([ (p, e.does_asset_exist(p)) for p in ("/Game/WeatherFX/M_RainSplash","/Game/WeatherFX/M_SnowFlakes")]); import weather_fx; print(weather_fx._st.keys())

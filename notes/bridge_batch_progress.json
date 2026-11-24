@@ -1,0 +1,95 @@
+{
+  "tasks": {
+    "01_memory": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\01_memory.md",
+      "source_hashes": {
+        "unreal/SkyBridge/memory_governor.py": "120fa4a38bafba587cb84553dad9378583d27a11f3171f7d82a5366ba732572b",
+        "unreal/SkyBridge/live_bridge.py": "ef5459e7a87e6ef0af675641e1d8a60c46d9482e6797cf159ef303a53303965d"
+      },
+      "seconds": 2.4
+    },
+    "02_world": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\02_world.md",
+      "source_hashes": {
+        "unreal/SkyBridge/live_bridge.py": "ef5459e7a87e6ef0af675641e1d8a60c46d9482e6797cf159ef303a53303965d"
+      },
+      "seconds": 4.5
+    },
+    "03_imports": {
+      "state": "failed",
+      "error": "Evidence quote has no unique match in the provided excerpt"
+    },
+    "04_npc_lifetime": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\04_npc_lifetime.md",
+      "source_hashes": {
+        "unreal/SkyBridge/npc_live.py": "06a0d62b4a01866052e47250ff5c7ae20b127af0e2319a786d22a5ec6d16cdbd"
+      },
+      "seconds": 2.0
+    },
+    "05_npc_pose": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\05_npc_pose.md",
+      "source_hashes": {
+        "unreal/SkyBridge/npc_live.py": "06a0d62b4a01866052e47250ff5c7ae20b127af0e2319a786d22a5ec6d16cdbd"
+      },
+      "seconds": 6.4
+    },
+    "06_terrain": {
+      "state": "failed",
+      "error": "Evidence quote has no unique match in the provided excerpt"
+    },
+    "07_water": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\07_water.md",
+      "source_hashes": {
+        "unreal/SkyBridge/live_bridge.py": "ef5459e7a87e6ef0af675641e1d8a60c46d9482e6797cf159ef303a53303965d",
+        "unreal/SkyBridge/water_flow_apply.py": "ee7f1e95a513266c4d42a6ae305cf68de6b9973d0f63cca38d3f6694a9028bd7"
+      },
+      "seconds": 2.6
+    },
+    "08_launcher": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\08_launcher.md",
+      "source_hashes": {
+        "play.py": "f527024652879128b0557cba226d43a276bafb0adc7f2ebb94a940588208bbeb"
+      },
+      "seconds": 3.7
+    },
+    "09_conversion": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\09_conversion.md",
+      "source_hashes": {
+        "tools/asset_service.py": "b3e0be618744b141512b348430b034df5cb56c7360e4dace2266c3e1e401f177"
+      },
+      "seconds": 2.1
+    },
+    "10_offline_import": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\10_offline_import.md",
+      "source_hashes": {
+        "tools/offline_import.py": "a8fa2fe6e1e48fed72f7a59f47f2a0d7e7854e63b5b085661a53cf5d469c7034",
+        "unreal/SkyBridge/offline_import.py": "900538e860513195705d53196688e780de641e7511a3fd0708e2f14ed8f77b58"
+      },
+      "seconds": 3.1
+    },
+    "11_hud": {
+      "state": "needs_review",
+      "report": "D:\\Aidan_Moved\\SkyrimUnrealBridge\\notes\\bridge_batch\\11_hud.md",
+      "source_hashes": {
+        "remaster_watch.py": "3fd39b95cde131a1618b9f2a1a1669bec866c6184bd4e33ce799db31e54b979d"
+      },
+      "seconds": 5.7
+    },
+    "12_weather": {
+      "state": "failed",
+      "error": "Evidence quote has no unique match in the provided excerpt"
+    }
+  },
+  "pid": 5956,
+  "state": "finished",
+  "started": "2026-10-29 19:16:55",
+  "updated": "2026-10-29 19:17:10"
+}

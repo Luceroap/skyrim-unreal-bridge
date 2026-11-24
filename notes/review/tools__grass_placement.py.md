@@ -1,0 +1,4 @@
+# Review leads for tools/grass_placement.py (UNVERIFIED)
+L300 | bug | Unclamped weight w causing floating point precision issues: `keep = rng.random(len(fx)) < (g["density"] / 100.0) * w` | Weight w can exceed 1.0 due to texture blending, causing floating-point rounding errors where points should be kept at 100% probability but are omitted | Clamp w = min(w, 1.0) before probability calculation | high
+L40 | robustness | Hard-coded Skyrim data path: `DATA = r"D:\SteamLibrary\steamapps\common\Skyrim Special Edition\Data"` | Tool fails on non-Windows systems or non-default installations, blocking workflow | Replace with config file or command-line argument (e.g., `--data-dir`) | high
+L41 | robustness | Hard-coded Blender path: `BLENDER = r"D:\blender.exe"` | Tool fails if Blender isn't installed at hardcoded path, preventing model conversion | Replace with config file or command-line argument (e.g., `--blender-path`) | high

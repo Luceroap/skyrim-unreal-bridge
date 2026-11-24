@@ -1,0 +1,4 @@
+# Review leads for unreal/SkyBridge/land_terrain_live.py (UNVERIFIED)
+L306 | perf | parent = material() | Material rebuild called per spawn (invoked every frame via tick) | Full material expression graph rebuild causes heavy per-frame overhead | Build material once at startup and cache the asset | high
+L310 | perf | todo.sort(...) | Sorting entire pending tile list every frame | O(n log n) sort per frame for n pending tiles, scaling poorly with area size | Maintain a priority queue (heap) of pending tiles for efficient nearest-neighbor retrieval | high
+L19 | robustness | AREA = r"C:\Users\Aidan\SkyrimUnrealBridge\area2" | Absolute path hard-coded for project location | Breaks if project moves or runs on different user/machine | Use Unreal engine path functions (e.g., unreal.Paths.project_content_dir()) | high

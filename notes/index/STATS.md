@@ -1,0 +1,53 @@
+# Size
+
+## largest source files
+- 64 KB  unreal/SkyBridge/live_bridge.py
+- 47 KB  unreal/SkyBridge/remaster_materials.py
+- 41 KB  plugin/src/main.cpp
+- 36 KB  unreal/SkyBridge/npc_live.py
+- 31 KB  tools/land_textures.py
+- 30 KB  tools/grass_placement.py
+- 29 KB  area2/npc_live_before_cursor_frozen.py
+- 25 KB  start_bridge.py
+- 24 KB  tools/land_terrain.py
+- 24 KB  tools/distant_world.py
+- 22 KB  unreal/SkyBridge/tamriel_live.py
+- 21 KB  unreal/SkyBridge/weather_fx.py
+- 20 KB  area2/npc_live_before_cursor.py
+- 20 KB  tools/grass_world.py
+- 20 KB  tools/tamriel_terrain.py
+- 20 KB  unreal/SkyBridge/land_terrain_live.py
+- 19 KB  tools/lod_objects.py
+- 17 KB  tools/editor_watchdog.py
+- 16 KB  unreal/SkyBridge/atmosphere.py
+- 15 KB  tools/make_local_queue.py
+- 14 KB  remaster_watch.py
+- 14 KB  unreal/SkyBridge/Source/SkyBridge/SkyrimCameraActor.cpp
+- 12 KB  tools/lod_horizon_preview.py
+- 11 KB  tools/run_local_queue.py
+- 11 KB  tools/land_textures_blender.py
+- 10 KB  tools/grass_blender.py
+- 9 KB  tools/tamriel_world.py
+- 9 KB  tools/nif2obj.py
+- 9 KB  unreal/SkyBridge/grass_live.py
+- 8 KB  tools/make_project_index.py
+- 8 KB  tools/npc_skin.py
+- 8 KB  tools/esm_land_tex.py
+- 7 KB  play.py
+- 7 KB  shared/BridgeShared.h
+- 7 KB  unreal/SkyBridge/memory_governor.py
+- 6 KB  unreal/SkyBridge/ue_assets.py
+- 6 KB  unreal/SkyBridge/night_sky.py
+- 6 KB  unreal/SkyBridge/upgrade_materials.py
+- 5 KB  tools/npc_build.py
+- 5 KB  tools/lod_terrain.py
+
+## lines per folder
+-    9619  tools
+-    6065  unreal/SkyBridge
+-    2912  area2
+-    1162  plugin/src
+-    1011  .
+-     578  unreal/SkyBridge/Source/SkyBridge
+-     431  tools/debug
+-     152  shared

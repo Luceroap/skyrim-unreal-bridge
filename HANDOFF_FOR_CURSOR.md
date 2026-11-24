@@ -170,7 +170,6 @@ Disable autostart of the bridge in the editor by creating `area2\no_autostart.tx
 - Windows Smart App Control intermittently blocks freshly built unsigned DLLs (error 4551). Do NOT disable or alter
   security settings; rebuild with a trivial change and test-load via `ctypes.WinDLL`, keep known-good copies.
 - Never create accounts or enter passwords/keys. Back up game files before editing them.
-- Do not install the "leaked DLSS 5" Nexus tool, and do not extract assets from Oblivion Remastered/NBA 2K; use official NVIDIA plugin.
 - Plugin build: `cmake --build build --config Release` in `plugin/`; check the build succeeded before copying
   `build/Release/SkyrimUnrealBridge.dll` to `Data\SKSE\Plugins`.
 - Owner preference: build end to end, do not stop to ask or announce next steps.

@@ -1,0 +1,2511 @@
+{
+ "F_inventory": {
+  "ok": true,
+  "at": "2026-10-28 20:02:43"
+ },
+ "F_shared_memory_spec": {
+  "ok": true,
+  "at": "2026-10-28 20:06:29"
+ },
+ "F_todos": {
+  "ok": true,
+  "at": "2026-10-28 20:08:20"
+ },
+ "F_decisions_digest": {
+  "ok": true,
+  "at": "2026-10-28 20:11:56"
+ },
+ "F_readme_digest": {
+  "ok": true,
+  "at": "2026-10-28 20:15:00"
+ },
+ "F_control_files": {
+  "ok": true,
+  "at": "2026-10-28 20:18:04"
+ },
+ "F_launchers": {
+  "ok": true,
+  "at": "2026-10-28 20:19:05"
+ },
+ "F_failed_models": {
+  "ok": true,
+  "at": "2026-10-29 01:48:57",
+  "worker": "local"
+ },
+ "F_log_digest": {
+  "ok": true,
+  "at": "2026-10-28 20:19:51"
+ },
+ "F_import_graph": {
+  "ok": true,
+  "at": "2026-10-28 21:22:41"
+ },
+ "F_tuning_constants": {
+  "ok": true,
+  "at": "2026-10-28 20:48:34"
+ },
+ "F_hardcoded_paths": {
+  "ok": true,
+  "at": "2026-10-28 20:52:20"
+ },
+ "F_commands_catalog": {
+  "ok": true,
+  "at": "2026-10-28 20:55:15"
+ },
+ "F_glossary": {
+  "ok": true,
+  "at": "2026-10-28 21:26:40"
+ },
+ "F_manual_test_checklist": {
+  "ok": true,
+  "at": "2026-10-29 00:24:10"
+ },
+ "D_unreal_SkyBridge_live_bridge.py.part1": {
+  "ok": true,
+  "at": "2026-10-29 00:25:38"
+ },
+ "D_unreal_SkyBridge_live_bridge.py.part2": {
+  "ok": true,
+  "at": "2026-10-29 00:26:34"
+ },
+ "R_unreal_SkyBridge_live_bridge.py.part1": {
+  "ok": true,
+  "at": "2026-10-29 00:28:07"
+ },
+ "R_unreal_SkyBridge_live_bridge.py.part2": {
+  "ok": true,
+  "at": "2026-10-29 00:29:59"
+ },
+ "D_unreal_SkyBridge_npc_live.py": {
+  "ok": true,
+  "at": "2026-10-29 00:30:52"
+ },
+ "R_unreal_SkyBridge_npc_live.py.part1": {
+  "ok": true,
+  "at": "2026-10-29 00:33:04"
+ },
+ "R_unreal_SkyBridge_npc_live.py.part2": {
+  "ok": true,
+  "at": "2026-10-29 00:35:22"
+ },
+ "D_plugin_src_main.cpp.part1": {
+  "ok": true,
+  "at": "2026-10-29 14:18:18",
+  "worker": "local"
+ },
+ "D_plugin_src_main.cpp.part2": {
+  "ok": true,
+  "at": "2026-10-29 00:39:51",
+  "worker": "local"
+ },
+ "R_plugin_src_main.cpp.part1": {
+  "ok": true,
+  "at": "2026-10-29 00:42:03",
+  "worker": "local"
+ },
+ "R_plugin_src_main.cpp.part2": {
+  "ok": true,
+  "at": "2026-10-29 00:43:45",
+  "worker": "local"
+ },
+ "D_shared_BridgeShared.h": {
+  "ok": true,
+  "at": "2026-10-29 00:44:41",
+  "worker": "local"
+ },
+ "R_shared_BridgeShared.h": {
+  "ok": true,
+  "at": "2026-10-29 00:47:08",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_remaster_materials.py.part1": {
+  "ok": true,
+  "at": "2026-10-29 10:07:59",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_remaster_materials.py.part2": {
+  "ok": true,
+  "at": "2026-10-29 00:49:10",
+  "worker": "local"
+ },
+ "R_unreal_SkyBridge_remaster_materials.py.part1": {
+  "ok": true,
+  "at": "2026-10-29 00:51:05",
+  "worker": "local"
+ },
+ "R_unreal_SkyBridge_remaster_materials.py.part2": {
+  "ok": true,
+  "at": "2026-10-29 00:53:42",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_atmosphere.py": {
+  "ok": true,
+  "at": "2026-10-29 00:54:32",
+  "worker": "local"
+ },
+ "R_unreal_SkyBridge_atmosphere.py": {
+  "ok": true,
+  "at": "2026-10-29 00:56:11",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_tamriel_live.py": {
+  "ok": false,
+  "at": "2026-10-29 14:19:39",
+  "worker": "local"
+ },
+ "R_unreal_SkyBridge_tamriel_live.py": {
+  "ok": true,
+  "at": "2026-10-29 00:59:09",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_land_terrain_live.py": {
+  "ok": true,
+  "at": "2026-10-29 00:59:41",
+  "worker": "local"
+ },
+ "R_unreal_SkyBridge_land_terrain_live.py": {
+  "ok": true,
+  "at": "2026-10-29 01:01:43",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_grass_live.py": {
+  "ok": true,
+  "at": "2026-10-29 01:02:27",
+  "worker": "local"
+ },
+ "R_unreal_SkyBridge_grass_live.py": {
+  "ok": true,
+  "at": "2026-10-29 01:05:18",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_weather_fx.py": {
+  "ok": true,
+  "at": "2026-10-29 01:06:09",
+  "worker": "local"
+ },
+ "R_unreal_SkyBridge_weather_fx.py": {
+  "ok": true,
+  "at": "2026-10-29 01:08:40",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_memory_governor.py": {
+  "ok": true,
+  "at": "2026-10-29 01:09:33",
+  "worker": "local"
+ },
+ "R_unreal_SkyBridge_memory_governor.py": {
+  "ok": true,
+  "at": "2026-10-29 01:10:50",
+  "worker": "local"
+ },
+ "D_start_bridge.py": {
+  "ok": true,
+  "at": "2026-10-29 01:11:22",
+  "worker": "local"
+ },
+ "R_start_bridge.py": {
+  "ok": true,
+  "at": "2026-10-29 01:14:47",
+  "worker": "local"
+ },
+ "D_play.py": {
+  "ok": true,
+  "at": "2026-10-29 01:15:37",
+  "worker": "local"
+ },
+ "R_play.py": {
+  "ok": true,
+  "at": "2026-10-29 01:17:19",
+  "worker": "local"
+ },
+ "D_tools_asset_service.py": {
+  "ok": true,
+  "at": "2026-10-29 01:18:10",
+  "worker": "local"
+ },
+ "R_tools_asset_service.py": {
+  "ok": true,
+  "at": "2026-10-29 01:20:00",
+  "worker": "local"
+ },
+ "D_tools_offline_import.py": {
+  "ok": true,
+  "at": "2026-10-29 01:20:55",
+  "worker": "local"
+ },
+ "R_tools_offline_import.py": {
+  "ok": true,
+  "at": "2026-10-29 01:22:29",
+  "worker": "local"
+ },
+ "D_tools_npc_batch.py": {
+  "ok": true,
+  "at": "2026-10-29 01:23:30",
+  "worker": "local"
+ },
+ "R_tools_npc_batch.py": {
+  "ok": true,
+  "at": "2026-10-29 01:25:11",
+  "worker": "local"
+ },
+ "D_tools_npc_autobuild.py": {
+  "ok": true,
+  "at": "2026-10-29 01:25:57",
+  "worker": "local"
+ },
+ "R_tools_npc_autobuild.py": {
+  "ok": true,
+  "at": "2026-10-29 01:27:38",
+  "worker": "local"
+ },
+ "D_tools_nif2obj.py": {
+  "ok": true,
+  "at": "2026-10-29 01:28:14",
+  "worker": "local"
+ },
+ "R_tools_nif2obj.py": {
+  "ok": true,
+  "at": "2026-10-29 01:30:10",
+  "worker": "local"
+ },
+ "D_tools_npc_skin.py": {
+  "ok": true,
+  "at": "2026-10-29 10:12:13",
+  "worker": "local"
+ },
+ "R_tools_npc_skin.py": {
+  "ok": true,
+  "at": "2026-10-29 01:32:55",
+  "worker": "local"
+ },
+ "D_tools_land_terrain.py": {
+  "ok": true,
+  "at": "2026-10-29 01:33:46",
+  "worker": "local"
+ },
+ "R_tools_land_terrain.py": {
+  "ok": true,
+  "at": "2026-10-29 01:35:15",
+  "worker": "local"
+ },
+ "D_tools_land_textures.py": {
+  "ok": false,
+  "at": "2026-10-29 14:20:34",
+  "worker": "local"
+ },
+ "R_tools_land_textures.py": {
+  "ok": true,
+  "at": "2026-10-29 01:37:32",
+  "worker": "local"
+ },
+ "D_tools_grass_placement.py": {
+  "ok": true,
+  "at": "2026-10-29 01:38:14",
+  "worker": "local"
+ },
+ "R_tools_grass_placement.py": {
+  "ok": true,
+  "at": "2026-10-29 01:41:18",
+  "worker": "local"
+ },
+ "D_tools_distant_world.py": {
+  "ok": true,
+  "at": "2026-10-29 01:42:15",
+  "worker": "local"
+ },
+ "R_tools_distant_world.py": {
+  "ok": true,
+  "at": "2026-10-29 01:44:46",
+  "worker": "local"
+ },
+ "D_tools_tamriel_terrain.py": {
+  "ok": true,
+  "at": "2026-10-29 01:45:49",
+  "worker": "local"
+ },
+ "R_tools_tamriel_terrain.py": {
+  "ok": true,
+  "at": "2026-10-29 01:48:11",
+  "worker": "local"
+ },
+ "F_git_history_digest": {
+  "ok": true,
+  "at": "2026-10-29 01:55:33",
+  "worker": "local"
+ },
+ "F_naming_conventions": {
+  "ok": true,
+  "at": "2026-10-29 01:58:26",
+  "worker": "local"
+ },
+ "F_pipeline_map": {
+  "ok": true,
+  "at": "2026-10-29 02:00:39",
+  "worker": "local"
+ },
+ "F_known_issues": {
+  "ok": true,
+  "at": "2026-10-29 02:03:39",
+  "worker": "local"
+ },
+ "F_memory_code_map": {
+  "ok": true,
+  "at": "2026-10-29 02:07:19",
+  "worker": "local"
+ },
+ "F_live_bridge_layers": {
+  "ok": true,
+  "at": "2026-10-29 02:11:03",
+  "worker": "local"
+ },
+ "F_plugin_function_index": {
+  "ok": true,
+  "at": "2026-10-29 02:16:26",
+  "worker": "local"
+ },
+ "F_npc_live_map": {
+  "ok": true,
+  "at": "2026-10-29 02:20:18",
+  "worker": "local"
+ },
+ "F_unreal_scripts_index": {
+  "ok": true,
+  "at": "2026-10-29 02:22:25",
+  "worker": "local"
+ },
+ "W_daily_use": {
+  "ok": true,
+  "at": "2026-10-29 02:45:13",
+  "worker": "local"
+ },
+ "W_troubleshooting": {
+  "ok": false,
+  "at": "2026-10-29 02:46:30",
+  "worker": "local"
+ },
+ "W_tools_overview": {
+  "ok": true,
+  "at": "2026-10-29 02:48:13",
+  "worker": "local"
+ },
+ "W_flags_reference": {
+  "ok": false,
+  "at": "2026-10-29 02:49:40",
+  "worker": "local"
+ },
+ "W_changelog_draft": {
+  "ok": true,
+  "at": "2026-10-29 02:50:59",
+  "worker": "local"
+ },
+ "W_photo_guide": {
+  "ok": true,
+  "at": "2026-10-29 02:51:41",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_live_bridge.py.part1": {
+  "ok": true,
+  "at": "2026-10-29 02:52:14",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_live_bridge.py.part2": {
+  "ok": true,
+  "at": "2026-10-29 02:52:55",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_npc_live.py.part1": {
+  "ok": true,
+  "at": "2026-10-29 02:53:48",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_npc_live.py.part2": {
+  "ok": true,
+  "at": "2026-10-29 02:54:13",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_remaster_materials.py.part1": {
+  "ok": true,
+  "at": "2026-10-29 02:54:33",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_remaster_materials.py.part2": {
+  "ok": true,
+  "at": "2026-10-29 02:54:59",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_atmosphere.py": {
+  "ok": true,
+  "at": "2026-10-29 02:55:29",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_tamriel_live.py": {
+  "ok": true,
+  "at": "2026-10-29 02:56:23",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_land_terrain_live.py": {
+  "ok": true,
+  "at": "2026-10-29 02:56:53",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_grass_live.py": {
+  "ok": true,
+  "at": "2026-10-29 02:57:29",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_weather_fx.py": {
+  "ok": true,
+  "at": "2026-10-29 02:58:04",
+  "worker": "local"
+ },
+ "C_unreal_SkyBridge_memory_governor.py": {
+  "ok": true,
+  "at": "2026-10-29 02:58:24",
+  "worker": "local"
+ },
+ "C_play.py": {
+  "ok": true,
+  "at": "2026-10-29 02:58:56",
+  "worker": "local"
+ },
+ "C_tools_asset_service.py": {
+  "ok": true,
+  "at": "2026-10-29 02:59:34",
+  "worker": "local"
+ },
+ "C_tools_offline_import.py": {
+  "ok": true,
+  "at": "2026-10-29 02:59:56",
+  "worker": "local"
+ },
+ "C_tools_npc_autobuild.py": {
+  "ok": false,
+  "at": "2026-10-29 03:00:41",
+  "worker": "local"
+ },
+ "C_tools_nif2obj.py": {
+  "ok": true,
+  "at": "2026-10-29 03:02:06",
+  "worker": "local"
+ },
+ "C_tools_npc_skin.py": {
+  "ok": true,
+  "at": "2026-10-29 03:02:32",
+  "worker": "local"
+ },
+ "C_tools_land_terrain.py": {
+  "ok": true,
+  "at": "2026-10-29 03:02:54",
+  "worker": "local"
+ },
+ "C_tools_land_textures.py": {
+  "ok": true,
+  "at": "2026-10-29 03:03:45",
+  "worker": "local"
+ },
+ "C_tools_grass_placement.py": {
+  "ok": true,
+  "at": "2026-10-29 03:04:20",
+  "worker": "local"
+ },
+ "C_tools_distant_world.py": {
+  "ok": true,
+  "at": "2026-10-29 03:04:54",
+  "worker": "local"
+ },
+ "C_tools_tamriel_terrain.py": {
+  "ok": true,
+  "at": "2026-10-29 03:05:36",
+  "worker": "local"
+ },
+ "D_AGENTS.md": {
+  "ok": true,
+  "at": "2026-10-29 03:06:06",
+  "worker": "local"
+ },
+ "D_AGENT_BRIEFING.md": {
+  "ok": true,
+  "at": "2026-10-29 03:06:48",
+  "worker": "local"
+ },
+ "D_COORDINATION.md.part1": {
+  "ok": false,
+  "at": "2026-10-29 03:07:27",
+  "worker": "local"
+ },
+ "D_COORDINATION.md.part2": {
+  "ok": true,
+  "at": "2026-10-29 03:08:44",
+  "worker": "local"
+ },
+ "D_Codex.bat": {
+  "ok": true,
+  "at": "2026-10-29 03:09:23",
+  "worker": "local"
+ },
+ "D_Codex_Local.bat": {
+  "ok": true,
+  "at": "2026-10-29 03:09:58",
+  "worker": "local"
+ },
+ "D_GRUNT_TASKS_FOR_LOCAL_MODEL.md": {
+  "ok": false,
+  "at": "2026-10-29 03:10:41",
+  "worker": "local"
+ },
+ "D_HANDOFF_FOR_CHATGPT.md": {
+  "ok": true,
+  "at": "2026-10-29 03:11:20",
+  "worker": "local"
+ },
+ "D_HANDOFF_FOR_CURSOR.md": {
+  "ok": true,
+  "at": "2026-10-29 03:12:40",
+  "worker": "local"
+ },
+ "D_Import_Assets_Offline.bat": {
+  "ok": true,
+  "at": "2026-10-29 03:13:20",
+  "worker": "local"
+ },
+ "D_Launch_Demo.bat": {
+  "ok": true,
+  "at": "2026-10-29 03:13:54",
+  "worker": "local"
+ },
+ "D_Local_Queue.bat": {
+  "ok": true,
+  "at": "2026-10-29 03:14:41",
+  "worker": "local"
+ },
+ "D_Photo_Shoot.bat": {
+  "ok": true,
+  "at": "2026-10-29 03:15:44",
+  "worker": "local"
+ },
+ "D_Play.bat": {
+  "ok": true,
+  "at": "2026-10-29 03:16:41",
+  "worker": "local"
+ },
+ "D_README.md": {
+  "ok": true,
+  "at": "2026-10-29 03:17:07",
+  "worker": "local"
+ },
+ "D_Stop.bat": {
+  "ok": true,
+  "at": "2026-10-29 03:17:37",
+  "worker": "local"
+ },
+ "D_area2_apply_dt.py": {
+  "ok": true,
+  "at": "2026-10-29 03:18:13",
+  "worker": "local"
+ },
+ "D_area2_cap.py": {
+  "ok": true,
+  "at": "2026-10-29 03:18:59",
+  "worker": "local"
+ },
+ "D_area2_cap_root.py": {
+  "ok": true,
+  "at": "2026-10-29 03:19:44",
+  "worker": "local"
+ },
+ "D_area2_cap_walkers.py": {
+  "ok": true,
+  "at": "2026-10-29 03:20:20",
+  "worker": "local"
+ },
+ "D_area2_check_npc_mod.py": {
+  "ok": true,
+  "at": "2026-10-29 03:21:05",
+  "worker": "local"
+ },
+ "D_area2_fix_audit.py": {
+  "ok": true,
+  "at": "2026-10-29 03:21:49",
+  "worker": "local"
+ },
+ "D_area2_fix_audit2.py": {
+  "ok": true,
+  "at": "2026-10-29 03:22:40",
+  "worker": "local"
+ },
+ "D_area2_fix_detail.py": {
+  "ok": true,
+  "at": "2026-10-29 03:23:31",
+  "worker": "local"
+ },
+ "D_area2_fix_dup.py": {
+  "ok": true,
+  "at": "2026-10-29 03:24:30",
+  "worker": "local"
+ },
+ "D_area2_fix_interior.py": {
+  "ok": true,
+  "at": "2026-10-29 03:25:02",
+  "worker": "local"
+ },
+ "D_area2_fix_interior2.py": {
+  "ok": true,
+  "at": "2026-10-29 03:25:47",
+  "worker": "local"
+ },
+ "D_area2_fix_night.py": {
+  "ok": true,
+  "at": "2026-10-29 03:26:31",
+  "worker": "local"
+ },
+ "D_area2_fix_npc_mats.py": {
+  "ok": true,
+  "at": "2026-10-29 03:27:17",
+  "worker": "local"
+ },
+ "D_area2_fix_prefetch.py": {
+  "ok": true,
+  "at": "2026-10-29 03:27:56",
+  "worker": "local"
+ },
+ "D_area2_fix_trees.py": {
+  "ok": true,
+  "at": "2026-10-29 03:28:49",
+  "worker": "local"
+ },
+ "D_area2_fix_water_nanite.py": {
+  "ok": true,
+  "at": "2026-10-29 03:29:39",
+  "worker": "local"
+ },
+ "D_area2_fix_wet.py": {
+  "ok": true,
+  "at": "2026-10-29 03:30:07",
+  "worker": "local"
+ },
+ "D_area2_gpu_prof.py": {
+  "ok": true,
+  "at": "2026-10-29 03:30:55",
+  "worker": "local"
+ },
+ "D_area2_hot_atmos.py": {
+  "ok": true,
+  "at": "2026-10-29 03:31:33",
+  "worker": "local"
+ },
+ "D_area2_hot_memgov.py": {
+  "ok": true,
+  "at": "2026-10-29 03:32:14",
+  "worker": "local"
+ },
+ "D_area2_list_windows.py": {
+  "ok": true,
+  "at": "2026-10-29 03:33:27",
+  "worker": "local"
+ },
+ "D_area2_memgov_dry.py": {
+  "ok": true,
+  "at": "2026-10-29 03:34:19",
+  "worker": "local"
+ },
+ "D_area2_memrep.py": {
+  "ok": true,
+  "at": "2026-10-29 03:35:05",
+  "worker": "local"
+ },
+ "D_area2_night_test.py": {
+  "ok": false,
+  "at": "2026-10-29 03:35:43",
+  "worker": "local"
+ },
+ "D_area2_npc_capture.py": {
+  "ok": true,
+  "at": "2026-10-29 03:36:17",
+  "worker": "local"
+ },
+ "D_area2_npc_live_before_cursor.py": {
+  "ok": true,
+  "at": "2026-10-29 03:36:55",
+  "worker": "local"
+ },
+ "D_area2_npc_live_before_cursor_frozen.py": {
+  "ok": true,
+  "at": "2026-10-29 03:37:58",
+  "worker": "local"
+ },
+ "D_area2_patch_rain_occ.py": {
+  "ok": true,
+  "at": "2026-10-29 03:38:42",
+  "worker": "local"
+ },
+ "D_area2_preview_sky.py": {
+  "ok": true,
+  "at": "2026-10-29 03:39:36",
+  "worker": "local"
+ },
+ "D_area2_probe.py": {
+  "ok": true,
+  "at": "2026-10-29 03:40:32",
+  "worker": "local"
+ },
+ "D_area2_probe_arms.py": {
+  "ok": true,
+  "at": "2026-10-29 03:41:11",
+  "worker": "local"
+ },
+ "D_area2_probe_arms2.py": {
+  "ok": true,
+  "at": "2026-10-29 03:41:54",
+  "worker": "local"
+ },
+ "D_area2_probe_arms3.py": {
+  "ok": true,
+  "at": "2026-10-29 03:42:28",
+  "worker": "local"
+ },
+ "D_area2_probe_arms4.py": {
+  "ok": true,
+  "at": "2026-10-29 03:43:00",
+  "worker": "local"
+ },
+ "D_area2_probe_arms5.py": {
+  "ok": true,
+  "at": "2026-10-29 03:43:41",
+  "worker": "local"
+ },
+ "D_area2_probe_arms6.py": {
+  "ok": true,
+  "at": "2026-10-29 03:44:22",
+  "worker": "local"
+ },
+ "D_area2_probe_bake.py": {
+  "ok": true,
+  "at": "2026-10-29 03:44:58",
+  "worker": "local"
+ },
+ "D_area2_probe_bounds.py": {
+  "ok": true,
+  "at": "2026-10-29 03:45:34",
+  "worker": "local"
+ },
+ "D_area2_probe_btr.py": {
+  "ok": true,
+  "at": "2026-10-29 03:46:07",
+  "worker": "local"
+ },
+ "D_area2_probe_caps.py": {
+  "ok": true,
+  "at": "2026-10-29 03:46:59",
+  "worker": "local"
+ },
+ "D_area2_probe_cmp.py": {
+  "ok": true,
+  "at": "2026-10-29 03:47:33",
+  "worker": "local"
+ },
+ "D_area2_probe_dup.py": {
+  "ok": true,
+  "at": "2026-10-29 03:48:07",
+  "worker": "local"
+ },
+ "D_area2_probe_fog.py": {
+  "ok": true,
+  "at": "2026-10-29 03:48:37",
+  "worker": "local"
+ },
+ "D_area2_probe_gpu.py": {
+  "ok": true,
+  "at": "2026-10-29 03:49:13",
+  "worker": "local"
+ },
+ "D_area2_probe_ground.py": {
+  "ok": true,
+  "at": "2026-10-29 03:50:04",
+  "worker": "local"
+ },
+ "D_area2_probe_hist.py": {
+  "ok": true,
+  "at": "2026-10-29 03:51:01",
+  "worker": "local"
+ },
+ "D_area2_probe_light_props.py": {
+  "ok": true,
+  "at": "2026-10-29 03:51:42",
+  "worker": "local"
+ },
+ "D_area2_probe_limbs_live.py": {
+  "ok": true,
+  "at": "2026-10-29 03:52:23",
+  "worker": "local"
+ },
+ "D_area2_probe_lod.py": {
+  "ok": true,
+  "at": "2026-10-29 03:53:13",
+  "worker": "local"
+ },
+ "D_area2_probe_np.py": {
+  "ok": true,
+  "at": "2026-10-29 03:53:40",
+  "worker": "local"
+ },
+ "D_area2_probe_npc.py": {
+  "ok": true,
+  "at": "2026-10-29 03:54:46",
+  "worker": "local"
+ },
+ "D_area2_probe_npc2.py": {
+  "ok": true,
+  "at": "2026-10-29 03:55:30",
+  "worker": "local"
+ },
+ "D_area2_probe_npc3.py": {
+  "ok": true,
+  "at": "2026-10-29 03:56:11",
+  "worker": "local"
+ },
+ "D_area2_probe_npc_mats.py": {
+  "ok": true,
+  "at": "2026-10-29 03:57:02",
+  "worker": "local"
+ },
+ "D_area2_probe_perf.py": {
+  "ok": true,
+  "at": "2026-10-29 03:57:53",
+  "worker": "local"
+ },
+ "D_area2_probe_pf.py": {
+  "ok": true,
+  "at": "2026-10-29 03:58:45",
+  "worker": "local"
+ },
+ "D_area2_probe_plan.py": {
+  "ok": true,
+  "at": "2026-10-29 03:59:25",
+  "worker": "local"
+ },
+ "D_area2_probe_player.py": {
+  "ok": true,
+  "at": "2026-10-29 03:59:59",
+  "worker": "local"
+ },
+ "D_area2_probe_pose_cost.py": {
+  "ok": true,
+  "at": "2026-10-29 04:00:37",
+  "worker": "local"
+ },
+ "D_area2_probe_pose_rate.py": {
+  "ok": true,
+  "at": "2026-10-29 04:01:15",
+  "worker": "local"
+ },
+ "D_area2_probe_rain_mine.py": {
+  "ok": true,
+  "at": "2026-10-29 04:01:59",
+  "worker": "local"
+ },
+ "D_area2_probe_refresh.py": {
+  "ok": true,
+  "at": "2026-10-29 04:02:39",
+  "worker": "local"
+ },
+ "D_area2_probe_refresh2.py": {
+  "ok": true,
+  "at": "2026-10-29 04:03:10",
+  "worker": "local"
+ },
+ "D_area2_probe_render2.py": {
+  "ok": true,
+  "at": "2026-10-29 04:03:55",
+  "worker": "local"
+ },
+ "D_area2_probe_render_pose.py": {
+  "ok": true,
+  "at": "2026-10-29 04:04:28",
+  "worker": "local"
+ },
+ "D_area2_probe_rot.py": {
+  "ok": true,
+  "at": "2026-10-29 04:05:11",
+  "worker": "local"
+ },
+ "D_area2_probe_scale.py": {
+  "ok": true,
+  "at": "2026-10-29 04:05:46",
+  "worker": "local"
+ },
+ "D_area2_probe_sky.py": {
+  "ok": true,
+  "at": "2026-10-29 04:06:47",
+  "worker": "local"
+ },
+ "D_area2_probe_smooth.py": {
+  "ok": true,
+  "at": "2026-10-29 04:07:30",
+  "worker": "local"
+ },
+ "D_area2_probe_sp.py": {
+  "ok": true,
+  "at": "2026-10-29 04:08:03",
+  "worker": "local"
+ },
+ "D_area2_probe_state.py": {
+  "ok": true,
+  "at": "2026-10-29 04:08:59",
+  "worker": "local"
+ },
+ "D_area2_probe_stream_limbs.py": {
+  "ok": true,
+  "at": "2026-10-29 04:09:32",
+  "worker": "local"
+ },
+ "D_area2_probe_tex.py": {
+  "ok": true,
+  "at": "2026-10-29 04:10:04",
+  "worker": "local"
+ },
+ "D_area2_probe_vis.py": {
+  "ok": true,
+  "at": "2026-10-29 04:10:41",
+  "worker": "local"
+ },
+ "D_area2_probe_water_nanite.py": {
+  "ok": true,
+  "at": "2026-10-29 04:11:22",
+  "worker": "local"
+ },
+ "D_area2_prof_apply.py": {
+  "ok": true,
+  "at": "2026-10-29 04:12:07",
+  "worker": "local"
+ },
+ "D_area2_prof_npc.py": {
+  "ok": true,
+  "at": "2026-10-29 04:12:57",
+  "worker": "local"
+ },
+ "D_area2_prof_npc2.py": {
+  "ok": true,
+  "at": "2026-10-29 04:13:28",
+  "worker": "local"
+ },
+ "D_area2_quit_editor.py": {
+  "ok": true,
+  "at": "2026-10-29 04:14:09",
+  "worker": "local"
+ },
+ "D_area2_reload_npc_keep.py": {
+  "ok": true,
+  "at": "2026-10-29 04:14:46",
+  "worker": "local"
+ },
+ "D_area2_sbperf_cprof.py": {
+  "ok": true,
+  "at": "2026-10-29 04:15:32",
+  "worker": "local"
+ },
+ "D_area2_sbperf_csv.py": {
+  "ok": true,
+  "at": "2026-10-29 04:16:02",
+  "worker": "local"
+ },
+ "D_area2_sbperf_long.py": {
+  "ok": true,
+  "at": "2026-10-29 04:16:54",
+  "worker": "local"
+ },
+ "D_area2_sbperf_read.py": {
+  "ok": true,
+  "at": "2026-10-29 04:17:39",
+  "worker": "local"
+ },
+ "D_area2_sbperf_start.py": {
+  "ok": true,
+  "at": "2026-10-29 04:18:19",
+  "worker": "local"
+ },
+ "D_area2_sky_capture.py": {
+  "ok": true,
+  "at": "2026-10-29 04:18:57",
+  "worker": "local"
+ },
+ "D_area2_swap_npc.py": {
+  "ok": true,
+  "at": "2026-10-29 04:19:35",
+  "worker": "local"
+ },
+ "D_area2_swap_reset.py": {
+  "ok": true,
+  "at": "2026-10-29 04:20:20",
+  "worker": "local"
+ },
+ "D_area2_tam_test1.py": {
+  "ok": true,
+  "at": "2026-10-29 04:20:59",
+  "worker": "local"
+ },
+ "D_area2_test_interior.py": {
+  "ok": true,
+  "at": "2026-10-29 04:22:11",
+  "worker": "local"
+ },
+ "D_area2_test_npc_frozen.py": {
+  "ok": true,
+  "at": "2026-10-29 04:22:50",
+  "worker": "local"
+ },
+ "D_area2_test_npc_math.py": {
+  "ok": true,
+  "at": "2026-10-29 04:23:32",
+  "worker": "local"
+ },
+ "D_area2_test_refpose.py": {
+  "ok": true,
+  "at": "2026-10-29 04:24:09",
+  "worker": "local"
+ },
+ "D_area2_test_spaced_names.py": {
+  "ok": true,
+  "at": "2026-10-29 04:24:35",
+  "worker": "local"
+ },
+ "D_area2_undo_rain_mine.py": {
+  "ok": true,
+  "at": "2026-10-29 04:25:13",
+  "worker": "local"
+ },
+ "D_demo.py": {
+  "ok": true,
+  "at": "2026-10-29 04:25:49",
+  "worker": "local"
+ },
+ "D_plugin_src_PCH.h": {
+  "ok": false,
+  "at": "2026-10-29 04:26:28",
+  "worker": "local"
+ },
+ "D_rebuild_all.ps1": {
+  "ok": true,
+  "at": "2026-10-29 04:27:15",
+  "worker": "local"
+ },
+ "D_remaster_watch.py": {
+  "ok": true,
+  "at": "2026-10-29 04:27:52",
+  "worker": "local"
+ },
+ "D_start_bridge.ps1": {
+  "ok": true,
+  "at": "2026-10-29 04:28:13",
+  "worker": "local"
+ },
+ "D_tools_apply_docstrings.py": {
+  "ok": false,
+  "at": "2026-10-29 04:28:52",
+  "worker": "local"
+ },
+ "D_tools_auto_build.py": {
+  "ok": true,
+  "at": "2026-10-29 04:29:35",
+  "worker": "local"
+ },
+ "D_tools_blender_export.py": {
+  "ok": true,
+  "at": "2026-10-29 04:30:28",
+  "worker": "local"
+ },
+ "D_tools_blender_preview.py": {
+  "ok": true,
+  "at": "2026-10-29 04:31:14",
+  "worker": "local"
+ },
+ "D_tools_bsa.py": {
+  "ok": true,
+  "at": "2026-10-29 04:32:21",
+  "worker": "local"
+ },
+ "D_tools_build_area.py": {
+  "ok": true,
+  "at": "2026-10-29 04:33:04",
+  "worker": "local"
+ },
+ "D_tools_build_briefing.py": {
+  "ok": true,
+  "at": "2026-10-29 04:34:02",
+  "worker": "local"
+ },
+ "D_tools_capture_window.py": {
+  "ok": true,
+  "at": "2026-10-29 04:35:00",
+  "worker": "local"
+ },
+ "D_tools_check_rotation.py": {
+  "ok": true,
+  "at": "2026-10-29 04:35:56",
+  "worker": "local"
+ },
+ "D_tools_check_tex_keys.py": {
+  "ok": true,
+  "at": "2026-10-29 04:36:50",
+  "worker": "local"
+ },
+ "D_tools_compare_refs.py": {
+  "ok": true,
+  "at": "2026-10-29 04:37:36",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_api.py": {
+  "ok": true,
+  "at": "2026-10-29 04:38:05",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_creature_diag.py": {
+  "ok": true,
+  "at": "2026-10-29 04:38:51",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_creature_test.py": {
+  "ok": true,
+  "at": "2026-10-29 04:39:46",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_diag.py": {
+  "ok": true,
+  "at": "2026-10-29 04:40:24",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_diag2.py": {
+  "ok": true,
+  "at": "2026-10-29 04:40:55",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_diag3.py": {
+  "ok": true,
+  "at": "2026-10-29 04:41:26",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_dump_rest.py": {
+  "ok": true,
+  "at": "2026-10-29 04:42:09",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_names.py": {
+  "ok": true,
+  "at": "2026-10-29 04:42:43",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_probe.py": {
+  "ok": true,
+  "at": "2026-10-29 04:43:21",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_reload.py": {
+  "ok": true,
+  "at": "2026-10-29 04:44:07",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_try.py": {
+  "ok": true,
+  "at": "2026-10-29 04:44:49",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_view.py": {
+  "ok": true,
+  "at": "2026-10-29 04:45:16",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_view2.py": {
+  "ok": true,
+  "at": "2026-10-29 04:45:55",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_view3.py": {
+  "ok": true,
+  "at": "2026-10-29 04:46:42",
+  "worker": "local"
+ },
+ "D_tools_debug_npc_view_cow.py": {
+  "ok": true,
+  "at": "2026-10-29 04:47:15",
+  "worker": "local"
+ },
+ "D_tools_debug_walk_check.py": {
+  "ok": false,
+  "at": "2026-10-29 04:47:55",
+  "worker": "local"
+ },
+ "D_tools_debug_walk_check_lib.py": {
+  "ok": false,
+  "at": "2026-10-29 04:48:30",
+  "worker": "local"
+ },
+ "D_tools_debug_walk_watch.py": {
+  "ok": true,
+  "at": "2026-10-29 04:49:20",
+  "worker": "local"
+ },
+ "D_tools_debug_water_diag.py": {
+  "ok": true,
+  "at": "2026-10-29 04:49:51",
+  "worker": "local"
+ },
+ "D_tools_debug_water_fix.py": {
+  "ok": true,
+  "at": "2026-10-29 04:50:14",
+  "worker": "local"
+ },
+ "D_tools_debug_water_recompile.py": {
+  "ok": true,
+  "at": "2026-10-29 04:50:42",
+  "worker": "local"
+ },
+ "D_tools_debug_water_view.py": {
+  "ok": true,
+  "at": "2026-10-29 04:51:28",
+  "worker": "local"
+ },
+ "D_tools_derive_spec.py": {
+  "ok": true,
+  "at": "2026-10-29 04:51:59",
+  "worker": "local"
+ },
+ "D_tools_detail_noise.py": {
+  "ok": true,
+  "at": "2026-10-29 04:52:28",
+  "worker": "local"
+ },
+ "D_tools_editor_watchdog.py": {
+  "ok": false,
+  "at": "2026-10-29 04:53:40",
+  "worker": "local"
+ },
+ "D_tools_esm_area.py": {
+  "ok": false,
+  "at": "2026-10-29 04:54:43",
+  "worker": "local"
+ },
+ "D_tools_esm_land.py": {
+  "ok": true,
+  "at": "2026-10-29 04:55:31",
+  "worker": "local"
+ },
+ "D_tools_esm_land_tex.py": {
+  "ok": true,
+  "at": "2026-10-29 04:56:21",
+  "worker": "local"
+ },
+ "D_tools_esm_persistence.py": {
+  "ok": true,
+  "at": "2026-10-29 04:57:08",
+  "worker": "local"
+ },
+ "D_tools_esm_refs.py": {
+  "ok": true,
+  "at": "2026-10-29 04:58:02",
+  "worker": "local"
+ },
+ "D_tools_esm_water.py": {
+  "ok": true,
+  "at": "2026-10-29 04:59:05",
+  "worker": "local"
+ },
+ "D_tools_export_data.py": {
+  "ok": false,
+  "at": "2026-10-29 04:59:45",
+  "worker": "local"
+ },
+ "D_tools_fill_textures.py": {
+  "ok": true,
+  "at": "2026-10-29 05:00:31",
+  "worker": "local"
+ },
+ "D_tools_find_decals.py": {
+  "ok": true,
+  "at": "2026-10-29 05:00:58",
+  "worker": "local"
+ },
+ "D_tools_find_lod.py": {
+  "ok": true,
+  "at": "2026-10-29 05:01:41",
+  "worker": "local"
+ },
+ "D_tools_find_overrides.py": {
+  "ok": false,
+  "at": "2026-10-29 05:02:09",
+  "worker": "local"
+ },
+ "D_tools_find_tex.py": {
+  "ok": true,
+  "at": "2026-10-29 05:02:51",
+  "worker": "local"
+ },
+ "D_tools_gpu_profile.py": {
+  "ok": true,
+  "at": "2026-10-29 05:03:33",
+  "worker": "local"
+ },
+ "D_tools_grass_blender.py": {
+  "ok": true,
+  "at": "2026-10-29 05:04:18",
+  "worker": "local"
+ },
+ "D_tools_grass_world.py": {
+  "ok": true,
+  "at": "2026-10-29 05:04:51",
+  "worker": "local"
+ },
+ "D_tools_healthcheck.py": {
+  "ok": true,
+  "at": "2026-10-29 05:05:47",
+  "worker": "local"
+ },
+ "D_tools_land_textures_blender.py": {
+  "ok": false,
+  "at": "2026-10-29 05:06:47",
+  "worker": "local"
+ },
+ "D_tools_large_refs_preview.py": {
+  "ok": true,
+  "at": "2026-10-29 05:07:38",
+  "worker": "local"
+ },
+ "D_tools_lod_horizon_preview.py": {
+  "ok": false,
+  "at": "2026-10-29 05:08:20",
+  "worker": "local"
+ },
+ "D_tools_lod_objects.py": {
+  "ok": false,
+  "at": "2026-10-29 05:09:29",
+  "worker": "local"
+ },
+ "D_tools_lod_terrain.py": {
+  "ok": true,
+  "at": "2026-10-29 05:09:57",
+  "worker": "local"
+ },
+ "D_tools_make_local_queue.py": {
+  "ok": true,
+  "at": "2026-10-29 05:10:39",
+  "worker": "local"
+ },
+ "D_tools_make_project_index.py": {
+  "ok": true,
+  "at": "2026-10-29 05:11:27",
+  "worker": "local"
+ },
+ "D_tools_max_quality.py": {
+  "ok": true,
+  "at": "2026-10-29 05:11:52",
+  "worker": "local"
+ },
+ "D_tools_merge_area.py": {
+  "ok": false,
+  "at": "2026-10-29 05:12:47",
+  "worker": "local"
+ },
+ "D_tools_mesh_index.py": {
+  "ok": true,
+  "at": "2026-10-29 05:13:23",
+  "worker": "local"
+ },
+ "D_tools_npc_blender.py": {
+  "ok": true,
+  "at": "2026-10-29 05:14:05",
+  "worker": "local"
+ },
+ "D_tools_npc_build.py": {
+  "ok": true,
+  "at": "2026-10-29 05:15:22",
+  "worker": "local"
+ },
+ "D_tools_npc_build_creature.py": {
+  "ok": true,
+  "at": "2026-10-29 05:16:16",
+  "worker": "local"
+ },
+ "D_tools_npc_extract.py": {
+  "ok": true,
+  "at": "2026-10-29 05:17:19",
+  "worker": "local"
+ },
+ "D_tools_npc_hair_tint.py": {
+  "ok": true,
+  "at": "2026-10-29 05:17:54",
+  "worker": "local"
+ },
+ "D_tools_npc_preview.py": {
+  "ok": true,
+  "at": "2026-10-29 05:18:40",
+  "worker": "local"
+ },
+ "D_tools_npc_tex_alias.py": {
+  "ok": true,
+  "at": "2026-10-29 05:19:16",
+  "worker": "local"
+ },
+ "D_tools_perf_gpu_share.py": {
+  "ok": true,
+  "at": "2026-10-29 05:19:56",
+  "worker": "local"
+ },
+ "D_tools_perf_profile.py": {
+  "ok": true,
+  "at": "2026-10-29 05:20:56",
+  "worker": "local"
+ },
+ "D_tools_photo_keys.py": {
+  "ok": true,
+  "at": "2026-10-29 05:21:49",
+  "worker": "local"
+ },
+ "D_tools_projected_snow.py": {
+  "ok": false,
+  "at": "2026-10-29 05:22:37",
+  "worker": "local"
+ },
+ "D_tools_puddle_noise.py": {
+  "ok": true,
+  "at": "2026-10-29 05:23:04",
+  "worker": "local"
+ },
+ "D_tools_queue_large_refs.py": {
+  "ok": true,
+  "at": "2026-10-29 05:23:40",
+  "worker": "local"
+ },
+ "D_tools_read_actors.py": {
+  "ok": true,
+  "at": "2026-10-29 05:24:40",
+  "worker": "local"
+ },
+ "D_tools_read_bridge.py": {
+  "ok": true,
+  "at": "2026-10-29 05:25:22",
+  "worker": "local"
+ },
+ "D_tools_read_gear.py": {
+  "ok": true,
+  "at": "2026-10-29 05:26:12",
+  "worker": "local"
+ },
+ "D_tools_read_world.py": {
+  "ok": true,
+  "at": "2026-10-29 05:26:59",
+  "worker": "local"
+ },
+ "D_tools_run_local_queue.py": {
+  "ok": true,
+  "at": "2026-10-29 05:27:52",
+  "worker": "local"
+ },
+ "D_tools_set_cvar.py": {
+  "ok": true,
+  "at": "2026-10-29 05:28:36",
+  "worker": "local"
+ },
+ "D_tools_shot_session.py": {
+  "ok": true,
+  "at": "2026-10-29 05:29:16",
+  "worker": "local"
+ },
+ "D_tools_showcase_shot.py": {
+  "ok": true,
+  "at": "2026-10-29 05:30:08",
+  "worker": "local"
+ },
+ "D_tools_shutdown_after_import.py": {
+  "ok": true,
+  "at": "2026-10-29 05:31:10",
+  "worker": "local"
+ },
+ "D_tools_sky_extras.py": {
+  "ok": true,
+  "at": "2026-10-29 05:32:03",
+  "worker": "local"
+ },
+ "D_tools_skyrim_lightweight.py": {
+  "ok": true,
+  "at": "2026-10-29 05:32:50",
+  "worker": "local"
+ },
+ "D_tools_skyrim_plugins.py": {
+  "ok": true,
+  "at": "2026-10-29 05:33:33",
+  "worker": "local"
+ },
+ "D_tools_stream_coverage.py": {
+  "ok": true,
+  "at": "2026-10-29 05:34:21",
+  "worker": "local"
+ },
+ "D_tools_tamriel_world.py": {
+  "ok": false,
+  "at": "2026-10-29 05:34:57",
+  "worker": "local"
+ },
+ "D_tools_textures.py": {
+  "ok": true,
+  "at": "2026-10-29 05:35:41",
+  "worker": "local"
+ },
+ "D_tools_textures_pbr.py": {
+  "ok": true,
+  "at": "2026-10-29 05:36:19",
+  "worker": "local"
+ },
+ "D_tools_truth_to_area.py": {
+  "ok": true,
+  "at": "2026-10-29 05:37:00",
+  "worker": "local"
+ },
+ "D_tools_ue_run.py": {
+  "ok": true,
+  "at": "2026-10-29 05:37:31",
+  "worker": "local"
+ },
+ "D_tools_upscale_textures.py": {
+  "ok": true,
+  "at": "2026-10-29 05:38:00",
+  "worker": "local"
+ },
+ "D_tools_verify_models.py": {
+  "ok": true,
+  "at": "2026-10-29 05:39:00",
+  "worker": "local"
+ },
+ "D_tools_verify_unreal.py": {
+  "ok": true,
+  "at": "2026-10-29 05:39:34",
+  "worker": "local"
+ },
+ "D_tools_water_flow.py": {
+  "ok": true,
+  "at": "2026-10-29 05:40:07",
+  "worker": "local"
+ },
+ "D_tools_water_flow_run.py": {
+  "ok": true,
+  "at": "2026-10-29 05:40:31",
+  "worker": "local"
+ },
+ "D_tools_weatherfx_build.py": {
+  "ok": true,
+  "at": "2026-10-29 05:41:17",
+  "worker": "local"
+ },
+ "D_tools_weatherfx_check.py": {
+  "ok": true,
+  "at": "2026-10-29 05:41:53",
+  "worker": "local"
+ },
+ "D_tools_weatherfx_splash.py": {
+  "ok": true,
+  "at": "2026-10-29 05:42:36",
+  "worker": "local"
+ },
+ "D_tools_weatherfx_test.py": {
+  "ok": true,
+  "at": "2026-10-29 05:43:22",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Config_DefaultEditorSettings.ini": {
+  "ok": true,
+  "at": "2026-10-29 05:44:04",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Config_DefaultEngine.ini": {
+  "ok": true,
+  "at": "2026-10-29 05:44:52",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Config_DefaultInput.ini": {
+  "ok": true,
+  "at": "2026-10-29 05:45:35",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Source_SkyBridge_SkyBridge.cpp": {
+  "ok": true,
+  "at": "2026-10-29 05:46:24",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Source_SkyBridge_SkyBridgeGameMode.cpp": {
+  "ok": false,
+  "at": "2026-10-29 05:46:59",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Source_SkyBridge_SkyBridgeGameMode.h": {
+  "ok": false,
+  "at": "2026-10-29 05:47:57",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Source_SkyBridge_SkyBridgeViewLibrary.cpp": {
+  "ok": false,
+  "at": "2026-10-29 05:48:32",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Source_SkyBridge_SkyBridgeViewLibrary.h": {
+  "ok": false,
+  "at": "2026-10-29 05:49:13",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Source_SkyBridge_SkyrimCameraActor.cpp": {
+  "ok": true,
+  "at": "2026-10-29 05:49:43",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_Source_SkyBridge_SkyrimCameraActor.h": {
+  "ok": false,
+  "at": "2026-10-29 05:50:18",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_apply_textures.py": {
+  "ok": true,
+  "at": "2026-10-29 05:51:06",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_audit_slots.py": {
+  "ok": true,
+  "at": "2026-10-29 05:51:57",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_fire_fx.py": {
+  "ok": true,
+  "at": "2026-10-29 05:52:51",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_fix_slots.py": {
+  "ok": true,
+  "at": "2026-10-29 05:53:31",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_import_area.py": {
+  "ok": true,
+  "at": "2026-10-29 05:54:27",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_import_area2.py": {
+  "ok": true,
+  "at": "2026-10-29 05:55:19",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_import_terrain.py": {
+  "ok": true,
+  "at": "2026-10-29 05:55:48",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_import_terrain2.py": {
+  "ok": true,
+  "at": "2026-10-29 05:56:25",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_import_terrain3.py": {
+  "ok": true,
+  "at": "2026-10-29 05:57:21",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_import_whiterun.py": {
+  "ok": true,
+  "at": "2026-10-29 05:58:03",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_mountain_mist.py": {
+  "ok": true,
+  "at": "2026-10-29 05:58:49",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_night_sky.py": {
+  "ok": true,
+  "at": "2026-10-29 05:59:41",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_offline_import.py": {
+  "ok": true,
+  "at": "2026-10-29 06:00:30",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_probe_bounds.py": {
+  "ok": true,
+  "at": "2026-10-29 06:00:56",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_reimport_textures.py": {
+  "ok": false,
+  "at": "2026-10-29 06:01:54",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_ue_assets.py": {
+  "ok": false,
+  "at": "2026-10-29 06:03:02",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_upgrade_materials.py": {
+  "ok": false,
+  "at": "2026-10-29 06:03:29",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_water_flow_apply.py": {
+  "ok": true,
+  "at": "2026-10-29 06:04:22",
+  "worker": "local"
+ },
+ "D_unreal_SkyBridge_water_setup.py": {
+  "ok": true,
+  "at": "2026-10-29 06:05:22",
+  "worker": "local"
+ },
+ "Z_open_questions": {
+  "ok": false,
+  "at": "2026-10-29 06:06:40",
+  "worker": "local"
+ },
+ "Z_backlog": {
+  "ok": true,
+  "at": "2026-10-29 06:07:33",
+  "worker": "local"
+ },
+ "V_plugin_src_main.cpp_L900": {
+  "ok": true,
+  "at": "2026-10-29 12:27:20",
+  "worker": "local"
+ },
+ "V_tools_asset_service.py_L29": {
+  "ok": true,
+  "at": "2026-10-29 12:27:36",
+  "worker": "local"
+ },
+ "V_tools_land_textures.py_L362": {
+  "ok": true,
+  "at": "2026-10-29 12:28:06",
+  "worker": "local"
+ },
+ "V_tools_npc_batch.py_L54": {
+  "ok": true,
+  "at": "2026-10-29 12:28:22",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_atmosphere.py_L307": {
+  "ok": true,
+  "at": "2026-10-29 12:29:07",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_land_terrain_live.py_L306": {
+  "ok": true,
+  "at": "2026-10-29 12:29:42",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_land_terrain_live.py_L310": {
+  "ok": true,
+  "at": "2026-10-29 12:30:57",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L584": {
+  "ok": true,
+  "at": "2026-10-29 12:31:15",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L640": {
+  "ok": true,
+  "at": "2026-10-29 14:21:07",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L748": {
+  "ok": true,
+  "at": "2026-10-29 14:21:45",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_remaster_materials.py_L624": {
+  "ok": true,
+  "at": "2026-10-29 14:22:09",
+  "worker": "local"
+ },
+ "V_play.py_L74": {
+  "ok": true,
+  "at": "2026-10-29 14:22:33",
+  "worker": "local"
+ },
+ "V_tools_asset_service.py_L50": {
+  "ok": true,
+  "at": "2026-10-29 14:23:00",
+  "worker": "local"
+ },
+ "V_tools_land_terrain.py_L464": {
+  "ok": true,
+  "at": "2026-10-29 14:23:54",
+  "worker": "local"
+ },
+ "V_tools_npc_batch.py_L55": {
+  "ok": true,
+  "at": "2026-10-29 14:24:15",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_grass_live.py_L117": {
+  "ok": true,
+  "at": "2026-10-29 14:25:20",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L486": {
+  "ok": true,
+  "at": "2026-10-29 14:26:03",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L561": {
+  "ok": true,
+  "at": "2026-10-29 14:26:29",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L565": {
+  "ok": true,
+  "at": "2026-10-29 14:27:15",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_tamriel_live.py_L298": {
+  "ok": true,
+  "at": "2026-10-29 14:27:40",
+  "worker": "local"
+ },
+ "V_plugin_src_main.cpp_L860": {
+  "ok": true,
+  "at": "2026-10-29 14:28:09",
+  "worker": "local"
+ },
+ "V_shared_BridgeShared.h_L92": {
+  "ok": true,
+  "at": "2026-10-29 14:28:37",
+  "worker": "local"
+ },
+ "V_tools_grass_placement.py_L300": {
+  "ok": true,
+  "at": "2026-10-29 14:30:08",
+  "worker": "local"
+ },
+ "V_tools_nif2obj.py_L190": {
+  "ok": true,
+  "at": "2026-10-29 14:30:41",
+  "worker": "local"
+ },
+ "V_tools_npc_autobuild.py_L5": {
+  "ok": true,
+  "at": "2026-10-29 14:30:59",
+  "worker": "local"
+ },
+ "V_tools_offline_import.py_L15": {
+  "ok": true,
+  "at": "2026-10-29 14:31:30",
+  "worker": "local"
+ },
+ "V_tools_offline_import.py_L44": {
+  "ok": true,
+  "at": "2026-10-29 14:31:53",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_atmosphere.py_L165": {
+  "ok": true,
+  "at": "2026-10-29 14:32:24",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_grass_live.py_L13": {
+  "ok": true,
+  "at": "2026-10-29 14:32:43",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_memory_governor.py_L68": {
+  "ok": true,
+  "at": "2026-10-29 14:33:10",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_memory_governor.py_L88": {
+  "ok": true,
+  "at": "2026-10-29 14:33:35",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_remaster_materials.py_L140": {
+  "ok": true,
+  "at": "2026-10-29 14:34:01",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_remaster_materials.py_L211": {
+  "ok": true,
+  "at": "2026-10-29 14:34:45",
+  "worker": "local"
+ },
+ "V_shared_BridgeShared.h_L59": {
+  "ok": true,
+  "at": "2026-10-29 14:35:27",
+  "worker": "local"
+ },
+ "V_shared_BridgeShared.h_L129": {
+  "ok": true,
+  "at": "2026-10-29 14:36:22",
+  "worker": "local"
+ },
+ "V_tools_grass_placement.py_L40": {
+  "ok": true,
+  "at": "2026-10-29 14:36:42",
+  "worker": "local"
+ },
+ "V_tools_grass_placement.py_L41": {
+  "ok": true,
+  "at": "2026-10-29 14:37:20",
+  "worker": "local"
+ },
+ "V_tools_land_terrain.py_L244": {
+  "ok": true,
+  "at": "2026-10-29 14:37:52",
+  "worker": "local"
+ },
+ "V_tools_offline_import.py_L9": {
+  "ok": true,
+  "at": "2026-10-29 14:38:13",
+  "worker": "local"
+ },
+ "V_tools_offline_import.py_L10": {
+  "ok": true,
+  "at": "2026-10-29 14:38:31",
+  "worker": "local"
+ },
+ "V_tools_offline_import.py_L37": {
+  "ok": true,
+  "at": "2026-10-29 14:39:07",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_land_terrain_live.py_L19": {
+  "ok": true,
+  "at": "2026-10-29 14:39:26",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_memory_governor.py_L16": {
+  "ok": true,
+  "at": "2026-10-29 14:39:48",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_memory_governor.py_L25": {
+  "ok": true,
+  "at": "2026-10-29 14:40:11",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_remaster_materials.py_L556": {
+  "ok": true,
+  "at": "2026-10-29 14:41:07",
+  "worker": "local"
+ },
+ "V_tools_distant_world.py_L16": {
+  "ok": true,
+  "at": "2026-10-29 14:41:29",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_tamriel_live.py_L320": {
+  "ok": true,
+  "at": "2026-10-29 14:42:07",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_tamriel_live.py_L410": {
+  "ok": true,
+  "at": "2026-10-29 14:42:39",
+  "worker": "local"
+ },
+ "V_plugin_src_main.cpp_L678": {
+  "ok": true,
+  "at": "2026-10-29 14:43:13",
+  "worker": "local"
+ },
+ "V_plugin_src_main.cpp_L941": {
+  "ok": true,
+  "at": "2026-10-29 14:43:37",
+  "worker": "local"
+ },
+ "V_plugin_src_main.cpp_L976": {
+  "ok": true,
+  "at": "2026-10-29 14:44:17",
+  "worker": "local"
+ },
+ "V_tools_tamriel_terrain.py_L321": {
+  "ok": true,
+  "at": "2026-10-29 14:45:11",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L1025": {
+  "ok": true,
+  "at": "2026-10-29 14:45:40",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L1045": {
+  "ok": true,
+  "at": "2026-10-29 14:46:21",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_npc_live.py_L751": {
+  "ok": true,
+  "at": "2026-10-29 14:46:48",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_npc_live.py_L787": {
+  "ok": true,
+  "at": "2026-10-29 14:47:15",
+  "worker": "local"
+ },
+ "V_tools_tamriel_terrain.py_L180": {
+  "ok": true,
+  "at": "2026-10-29 14:47:42",
+  "worker": "local"
+ },
+ "V_plugin_src_main.cpp_L965": {
+  "ok": true,
+  "at": "2026-10-29 14:48:24",
+  "worker": "local"
+ },
+ "V_tools_asset_service.py_L7": {
+  "ok": true,
+  "at": "2026-10-29 14:48:43",
+  "worker": "local"
+ },
+ "V_tools_asset_service.py_L48": {
+  "ok": true,
+  "at": "2026-10-29 14:49:02",
+  "worker": "local"
+ },
+ "V_tools_nif2obj.py_L78": {
+  "ok": true,
+  "at": "2026-10-29 14:49:48",
+  "worker": "local"
+ },
+ "V_tools_npc_autobuild.py_L15": {
+  "ok": true,
+  "at": "2026-10-29 14:50:04",
+  "worker": "local"
+ },
+ "V_tools_offline_import.py_L26": {
+  "ok": true,
+  "at": "2026-10-29 14:50:28",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L212": {
+  "ok": true,
+  "at": "2026-10-29 14:50:50",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L492": {
+  "ok": true,
+  "at": "2026-10-29 14:51:21",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L531": {
+  "ok": true,
+  "at": "2026-10-29 14:51:39",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_npc_live.py_L724": {
+  "ok": true,
+  "at": "2026-10-29 14:52:10",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_remaster_materials.py_L636": {
+  "ok": true,
+  "at": "2026-10-29 14:52:48",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_weather_fx.py_L295": {
+  "ok": true,
+  "at": "2026-10-29 14:53:16",
+  "worker": "local"
+ },
+ "V_start_bridge.py_L150": {
+  "ok": true,
+  "at": "2026-10-29 14:53:42",
+  "worker": "local"
+ },
+ "V_start_bridge.py_L475": {
+  "ok": true,
+  "at": "2026-10-29 14:54:08",
+  "worker": "local"
+ },
+ "V_tools_land_terrain.py_L38": {
+  "ok": true,
+  "at": "2026-10-29 14:55:04",
+  "worker": "local"
+ },
+ "V_tools_npc_skin.py_L160": {
+  "ok": true,
+  "at": "2026-10-29 14:55:39",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_remaster_materials.py_L842": {
+  "ok": true,
+  "at": "2026-10-29 14:56:09",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_tamriel_live.py_L76": {
+  "ok": true,
+  "at": "2026-10-29 14:56:32",
+  "worker": "local"
+ },
+ "V_tools_npc_batch.py_L37": {
+  "ok": true,
+  "at": "2026-10-29 14:57:14",
+  "worker": "local"
+ },
+ "V_play.py_L9": {
+  "ok": true,
+  "at": "2026-10-29 14:57:41",
+  "worker": "local"
+ },
+ "V_play.py_L12": {
+  "ok": true,
+  "at": "2026-10-29 14:58:06",
+  "worker": "local"
+ },
+ "V_start_bridge.py_L29": {
+  "ok": true,
+  "at": "2026-10-29 14:58:59",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L522": {
+  "ok": true,
+  "at": "2026-10-29 14:59:33",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L549": {
+  "ok": true,
+  "at": "2026-10-29 14:59:57",
+  "worker": "local"
+ },
+ "V_plugin_src_main.cpp_L310": {
+  "ok": true,
+  "at": "2026-10-29 15:00:25",
+  "worker": "local"
+ },
+ "V_tools_tamriel_terrain.py_L34": {
+  "ok": true,
+  "at": "2026-10-29 15:01:01",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L208": {
+  "ok": true,
+  "at": "2026-10-29 15:01:20",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_live_bridge.py_L514": {
+  "ok": true,
+  "at": "2026-10-29 15:01:52",
+  "worker": "local"
+ },
+ "V_unreal_SkyBridge_npc_live.py_L734": {
+  "ok": true,
+  "at": "2026-10-29 15:02:14",
+  "worker": "local"
+ },
+ "V_start_bridge.py_L168": {
+  "ok": true,
+  "at": "2026-10-29 15:03:01",
+  "worker": "local"
+ },
+ "V_start_bridge.py_L355": {
+  "ok": true,
+  "at": "2026-10-29 15:03:39",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_live_bridge.py_L106": {
+  "ok": true,
+  "at": "2026-10-29 15:04:27",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_live_bridge.py_L204": {
+  "ok": true,
+  "at": "2026-10-29 15:04:59",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_live_bridge.py_L270": {
+  "ok": true,
+  "at": "2026-10-29 15:06:18",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_live_bridge.py_L366": {
+  "ok": true,
+  "at": "2026-10-29 15:07:18",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_live_bridge.py_L547": {
+  "ok": true,
+  "at": "2026-10-29 15:07:46",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_live_bridge.py_L625": {
+  "ok": true,
+  "at": "2026-10-29 15:08:29",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_live_bridge.py_L961": {
+  "ok": true,
+  "at": "2026-10-29 15:09:22",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_live_bridge.py_L1022": {
+  "ok": false,
+  "at": "2026-10-29 15:10:34",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_npc_live.py_L505": {
+  "ok": true,
+  "at": "2026-10-29 15:11:11",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_npc_live.py_L738": {
+  "ok": true,
+  "at": "2026-10-29 15:11:54",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_remaster_materials.py_L131": {
+  "ok": true,
+  "at": "2026-10-29 15:12:31",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_remaster_materials.py_L419": {
+  "ok": true,
+  "at": "2026-10-29 15:13:07",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_atmosphere.py_L123": {
+  "ok": true,
+  "at": "2026-10-29 15:13:37",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_atmosphere.py_L185": {
+  "ok": true,
+  "at": "2026-10-29 15:14:19",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_tamriel_live.py_L101": {
+  "ok": true,
+  "at": "2026-10-29 15:15:01",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_tamriel_live.py_L388": {
+  "ok": true,
+  "at": "2026-10-29 15:15:44",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_land_terrain_live.py_L151": {
+  "ok": true,
+  "at": "2026-10-29 15:16:21",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_grass_live.py_L153": {
+  "ok": true,
+  "at": "2026-10-29 15:16:58",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_weather_fx.py_L139": {
+  "ok": true,
+  "at": "2026-10-29 15:17:36",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_weather_fx.py_L229": {
+  "ok": true,
+  "at": "2026-10-29 15:18:17",
+  "worker": "local"
+ },
+ "E_unreal_SkyBridge_weather_fx.py_L365": {
+  "ok": true,
+  "at": "2026-10-29 15:18:58",
+  "worker": "local"
+ },
+ "E_play.py_L103": {
+  "ok": true,
+  "at": "2026-10-29 15:19:58",
+  "worker": "local"
+ },
+ "E_tools_nif2obj.py_L81": {
+  "ok": true,
+  "at": "2026-10-29 15:20:34",
+  "worker": "local"
+ },
+ "E_tools_nif2obj.py_L99": {
+  "ok": true,
+  "at": "2026-10-29 15:21:10",
+  "worker": "local"
+ },
+ "E_tools_npc_skin.py_L58": {
+  "ok": true,
+  "at": "2026-10-29 15:21:53",
+  "worker": "local"
+ },
+ "E_tools_land_terrain.py_L346": {
+  "ok": true,
+  "at": "2026-10-29 15:22:58",
+  "worker": "local"
+ },
+ "E_tools_land_textures.py_L597": {
+  "ok": true,
+  "at": "2026-10-29 15:23:48",
+  "worker": "local"
+ },
+ "E_tools_land_textures.py_L306": {
+  "ok": true,
+  "at": "2026-10-29 15:24:42",
+  "worker": "local"
+ },
+ "E_tools_grass_placement.py_L109": {
+  "ok": true,
+  "at": "2026-10-29 15:26:02",
+  "worker": "local"
+ },
+ "E_tools_grass_placement.py_L275": {
+  "ok": true,
+  "at": "2026-10-29 15:26:59",
+  "worker": "local"
+ },
+ "E_tools_grass_placement.py_L462": {
+  "ok": true,
+  "at": "2026-10-29 15:27:46",
+  "worker": "local"
+ },
+ "E_tools_grass_placement.py_L127": {
+  "ok": true,
+  "at": "2026-10-29 15:28:58",
+  "worker": "local"
+ },
+ "E_tools_distant_world.py_L175": {
+  "ok": true,
+  "at": "2026-10-29 15:29:43",
+  "worker": "local"
+ },
+ "E_tools_distant_world.py_L297": {
+  "ok": true,
+  "at": "2026-10-29 15:30:25",
+  "worker": "local"
+ },
+ "E_tools_distant_world.py_L372": {
+  "ok": true,
+  "at": "2026-10-29 15:31:09",
+  "worker": "local"
+ },
+ "E_tools_distant_world.py_L188": {
+  "ok": true,
+  "at": "2026-10-29 15:32:11",
+  "worker": "local"
+ },
+ "E_tools_tamriel_terrain.py_L44": {
+  "ok": true,
+  "at": "2026-10-29 15:33:00",
+  "worker": "local"
+ },
+ "E_tools_tamriel_terrain.py_L48": {
+  "ok": true,
+  "at": "2026-10-29 15:34:10",
+  "worker": "local"
+ },
+ "FMT_area2_dungeon_index.json": {
+  "ok": false,
+  "at": "2026-10-29 15:34:35",
+  "worker": "local"
+ },
+ "FMT_area2_interiors_falkreath.json": {
+  "ok": true,
+  "at": "2026-10-29 15:35:46",
+  "worker": "local"
+ },
+ "FMT_area2_interiors_morthal.json": {
+  "ok": true,
+  "at": "2026-10-29 15:36:14",
+  "worker": "local"
+ },
+ "FMT_area2_interiors_riverwood.json": {
+  "ok": true,
+  "at": "2026-10-29 15:36:34",
+  "worker": "local"
+ },
+ "FMT_area2_large_preview.json": {
+  "ok": true,
+  "at": "2026-10-29 15:37:21",
+  "worker": "local"
+ },
+ "FMT_area2_memory_status.json": {
+  "ok": true,
+  "at": "2026-10-29 15:38:06",
+  "worker": "local"
+ },
+ "FMT_area2_models.json": {
+  "ok": true,
+  "at": "2026-10-29 15:38:44",
+  "worker": "local"
+ },
+ "FMT_area2_request_batch.json": {
+  "ok": true,
+  "at": "2026-10-29 15:39:15",
+  "worker": "local"
+ },
+ "FMT_area2_verify_report.json": {
+  "ok": true,
+  "at": "2026-10-29 15:40:20",
+  "worker": "local"
+ },
+ "FMT_area2_whiterun_missing_ids.json": {
+  "ok": true,
+  "at": "2026-10-29 15:40:52",
+  "worker": "local"
+ },
+ "FMT_area2_world_markarthworld.json": {
+  "ok": true,
+  "at": "2026-10-29 15:41:07",
+  "worker": "local"
+ },
+ "FMT_area2_world_riftenworld.json": {
+  "ok": true,
+  "at": "2026-10-29 15:41:35",
+  "worker": "local"
+ },
+ "FMT_area2_world_solitudeworld.json": {
+  "ok": true,
+  "at": "2026-10-29 15:42:18",
+  "worker": "local"
+ },
+ "FMT_area2_world_whiterunworld.json": {
+  "ok": true,
+  "at": "2026-10-29 15:42:33",
+  "worker": "local"
+ },
+ "FMT_area2_world_windhelmworld.json": {
+  "ok": true,
+  "at": "2026-10-29 15:44:44",
+  "worker": "local"
+ },
+ "FMT_area2__pose_old.txt": {
+  "ok": true,
+  "at": "2026-10-29 15:45:29",
+  "worker": "local"
+ },
+ "FMT_area2_addons.txt": {
+  "ok": true,
+  "at": "2026-10-29 15:46:06",
+  "worker": "local"
+ },
+ "FMT_area2_audit.txt": {
+  "ok": true,
+  "at": "2026-10-29 15:46:51",
+  "worker": "local"
+ },
+ "FMT_area2_demo_out.txt": {
+  "ok": true,
+  "at": "2026-10-29 15:47:40",
+  "worker": "local"
+ },
+ "FMT_area2_dungeon_models.txt": {
+  "ok": true,
+  "at": "2026-10-29 15:48:23",
+  "worker": "local"
+ },
+ "FMT_area2_l1.txt": {
+  "ok": true,
+  "at": "2026-10-29 15:49:33",
+  "worker": "local"
+ },
+ "FMT_area2_pcam.txt": {
+  "ok": true,
+  "at": "2026-10-29 15:50:16",
+  "worker": "local"
+ },
+ "FMT_area2_pose_rate.txt": {
+  "ok": true,
+  "at": "2026-10-29 15:51:44",
+  "worker": "local"
+ }
+}

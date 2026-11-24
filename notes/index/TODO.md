@@ -1,0 +1,85 @@
+# TODO / FIXME / workaround comments
+- area2/fix_interior.py:8  print("interiors", len(live.interiors), "prefetch todo", len(live.prefetch_todo), "interior now", getattr(live, "_interior", None))
+- area2/fix_interior2.py:8  print("interior cells", len(live.interiors), "refs", len(live.interior_of), "prefetch todo", len(live.prefetch_todo))
+- area2/fix_prefetch.py:10  print("prefetch todo", len(live.prefetch_todo), "chunk", len(getattr(live, "_pf_chunk", [])))
+- area2/probe.py:50  rep.append("== distant models left to build: %d %s" % (len(getattr(live, "distant_todo", [])), list(getattr(live, "distant_todo", []))[:10]))
+- area2/probe_pf.py:1  print("prefetch left", len(getattr(live, "prefetch_todo", [])), "current batch", len(getattr(live, "_pf_chunk", [])))
+- area2/test_spaced_names.py:61  got = [n for n, _ in live.prefetch_todo]
+- area2/test_spaced_names.py:66  got = [n for n, _ in live.prefetch_todo]
+- tools/distant_world.py:39  if t == b"XXXX":
+- tools/esm_area.py:20  if t == b"XXXX":
+- tools/esm_land.py:17  if t == b"XXXX":
+- tools/esm_land_tex.py:24  if t == b"XXXX":
+- tools/esm_persistence.py:17  if t == b"XXXX":
+- tools/esm_refs.py:18  if t == b"XXXX":
+- tools/esm_water.py:16  if t == b"XXXX":
+- tools/find_overrides.py:18  if t == b"XXXX":
+- tools/grass_world.py:53  if t == b"XXXX":
+- tools/land_terrain.py:122  if t == b"XXXX":
+- tools/land_textures.py:57  if t == b"XXXX":
+- tools/large_refs_preview.py:17  if t == b"XXXX":
+- tools/make_local_queue.py:20  "todos": [GREP % ("TODO|FIXME|HACK|XXX|known issue|not implemented|workaround", "*.py *.cpp *.h *.md *.bat")],
+- tools/make_local_queue.py:51  ("todos", "Every TODO / FIXME / HACK / known-issue comment",
+- tools/make_local_queue.py:52  "Search all .py, .cpp, .h, .md and .bat files outside the folders area2/export, area2/obj, area2/tex, area2/nif, unreal/SkyBridge/Content, build, deps for: TODO, FIXME, HACK, XXX, 'known issue', 'not 
+- tools/make_local_queue.py:83  ("known_issues", "Known issues compiled from the docs",
+- tools/make_project_index.py:8  TODO.md         TODO/FIXME/HACK/workaround comments
+- tools/make_project_index.py:152  # ---------------------------------------------------------------- TODO
+- tools/make_project_index.py:153  rx = re.compile(r"(TODO|FIXME|HACK|XXX|workaround|known issue|not implemented)", re.I)
+- tools/make_project_index.py:154  with open(f"{OUT}/TODO.md", "w", encoding="utf-8") as w:
+- tools/make_project_index.py:155  w.write("# TODO / FIXME / workaround comments\n")
+- tools/npc_batch.py:41  todo = []
+- tools/npc_batch.py:64  todo.append((base, "female" if flags & 4 else "male", name, gear.get(refid, []), face.get(refid, base), slots.get(refid, 0)))
+- tools/npc_batch.py:67  todo = [t for t in todo if only in t[2].lower()]
+- tools/npc_batch.py:77  for base, sex, name, g, fc, sl in todo[:limit]:
+- tools/queue_large_refs.py:18  if t == b"XXXX":
+- tools/run_local_queue.py:3  python tools/run_local_queue.py --limit 5  only the next 5 tasks      --only F_todos  one task by id (re-runs it)
+- tools/run_local_queue.py:219  todo = [t for t in tasks if (a.only and t["id"] == a.only) or (not a.only and (t["id"] not in prog or (a.retry_failed and not prog[t["id"]]["ok"])))]
+- tools/run_local_queue.py:221  todo = todo[:a.limit]
+- tools/run_local_queue.py:222  log("starting %d tasks with %s" % (len(todo), MODEL))
+- tools/run_local_queue.py:225  for i, t in enumerate(todo, 1):
+- tools/run_local_queue.py:238  log("--- [%d/%d] NOW: %s  (%s%s)" % (i, len(todo), t["title"], t["out"], ", +verify pass" if t.get("verify") else ""))
+- tools/run_local_queue.py:246  eta = spent / i * (len(todo) - i) / 3600
+- tools/run_local_queue.py:247  print("    totals: %d done, %d failed, %d left in this run; avg %.1f min/task; about %.1f hours to go\n" % (okc, len(prog) - okc, len(todo) - i, spent / i / 60, eta), flush=True)
+- unreal/SkyBridge/land_terrain_live.py:308  todo = [n for n in info if (names is None or n in names) and not _alive(STATE["actors"].get(n))
+- unreal/SkyBridge/land_terrain_live.py:310  todo.sort(key=lambda n: math.hypot(info[n]["origin"][0] + 8192 - cx, info[n]["origin"][1] + 8192 - cy))
+- unreal/SkyBridge/land_terrain_live.py:312  for n in todo:
+- unreal/SkyBridge/land_terrain_live.py:330  left = len(todo) - made
+- unreal/SkyBridge/live_bridge.py:75  self.preview_todo = None
+- unreal/SkyBridge/live_bridge.py:580  if self.preview_todo is None:
+- unreal/SkyBridge/live_bridge.py:582  self.preview_todo = json.load(open(p)) if os.path.exists(p) else []
+- unreal/SkyBridge/live_bridge.py:587  self.preview_todo = [it for it in self.preview_todo if it["id"] not in seen and not taken(it["pos"])]
+- unreal/SkyBridge/live_bridge.py:657  while budget > 0 and self.preview_todo and not getattr(self, "_interior", False):
+- unreal/SkyBridge/live_bridge.py:658  it = self.preview_todo.pop()
+- unreal/SkyBridge/live_bridge.py:696  self.city, self.city_todo = {}, []
+- unreal/SkyBridge/live_bridge.py:700  self.city_todo = [it for it in self.interiors[ws[4:]]["refs"] if self.city_keep(it)]
+- unreal/SkyBridge/live_bridge.py:701  log("interior %s: %d references" % (ws[4:], len(self.city_todo)))
+- unreal/SkyBridge/live_bridge.py:707  self.city_todo = [it for it in json.load(open(p)) if self.city_keep(it)]
+- unreal/SkyBridge/live_bridge.py:708  log("city %s: %d references" % (ws, len(self.city_todo)))
+- unreal/SkyBridge/live_bridge.py:802  self.prefetch_todo = list(new.items())
+- unreal/SkyBridge/live_bridge.py:809  todo = getattr(self, "prefetch_todo", None)
+- unreal/SkyBridge/live_bridge.py:810  if not todo or time.time() - getattr(self, "_pf_t", 0) < 20.0:
+- unreal/SkyBridge/live_bridge.py:820  chunk, self.prefetch_todo = dict(todo[:40]), todo[40:]
+- unreal/SkyBridge/live_bridge.py:836  todo, waiting = getattr(self, "city_todo", []), []
+- unreal/SkyBridge/live_bridge.py:839  todo[:0], self.city_wait = self.city_wait, []
+- unreal/SkyBridge/live_bridge.py:840  while budget > 0 and todo:
+- unreal/SkyBridge/live_bridge.py:841  it = todo.pop()
+- unreal/SkyBridge/live_bridge.py:876  self.distant_todo = list(self.distant)
+- unreal/SkyBridge/live_bridge.py:929  for _ in range(min(4, len(self.distant_todo))):
+- unreal/SkyBridge/live_bridge.py:930  model = self.distant_todo.pop(0)
+- unreal/SkyBridge/live_bridge.py:935  self.distant_todo.append(model)
+- unreal/SkyBridge/offline_import.py:28  todo = [n for n in names if " " not in n and os.path.exists(os.path.join(AREA, "export", n + ".fbx")) and not eal.does_asset_exist("/Game/Area2/" + n)]
+- unreal/SkyBridge/offline_import.py:29  say("ready models %d, not imported yet %d%s" % (len(names), len(todo), (", this run limited to %d" % limit) if limit else ""))
+- unreal/SkyBridge/offline_import.py:31  for i, n in enumerate(todo):
+- unreal/SkyBridge/offline_import.py:43  say("%d imported (%d failed), %d left" % (done, failed, len(todo) - i - 1))
+- unreal/SkyBridge/offline_import.py:45  say("models finished: %d imported, %d failed, %d still to import" % (done, failed, len(todo) - done - failed))
+- unreal/SkyBridge/tamriel_live.py:188  self.todo = list(groups)
+- unreal/SkyBridge/tamriel_live.py:200  live.distant_todo = []
+- unreal/SkyBridge/tamriel_live.py:248  for key in self.todo:
+- unreal/SkyBridge/tamriel_live.py:276  self.todo.sort(key=lambda k: self.dist2(k, cam))
+- unreal/SkyBridge/tamriel_live.py:278  for _ in range(min(6, len(self.todo))):
+- unreal/SkyBridge/tamriel_live.py:279  key = self.todo.pop(0)
+- unreal/SkyBridge/tamriel_live.py:284  self.todo.append(key)                          # not converted yet: back of the queue
+- COORDINATION.md:158  `python tools\npc_batch.py [max]` builds every named humanoid currently in the actor stream that has no FBX yet. NOT built: generated actors (guards, form ids 0xFFxxxxxx: no baked head) and
+- COORDINATION.md:159  light-plugin NPCs (0xFExxxxxx / 0x03xxxxxx, FaceGen file lookup not handled yet). Fixed a Blender bug that created duplicate vertex groups (older FBXs were wrong; all rebuilt).
+- COORDINATION.md:322  shapes and carry vertex alpha for blend layers, both workarounds could go.)
+- README.md:189  shallow; clear water showed the tan bed). Known issue: where the coarse LOD terrain is lower than the real terrain, a

@@ -1,0 +1,155 @@
+# Controls (regex scan: names are exact, meanings are in notes/files/)
+
+## control file / area2 path (37)
+- `_pose_old.txt`  <- area2/test_npc_math.py
+- `addons.txt`  <- tools/make_local_queue.py, unreal/SkyBridge/live_bridge.py
+- `cap.py`  <- area2/cap.py
+- `debug_flags.txt`  <- unreal/SkyBridge/live_bridge.py, unreal/SkyBridge/tamriel_live.py
+- `distant_refs.json`  <- tools/distant_world.py, tools/lod_objects.py, unreal/SkyBridge/live_bridge.py
+- `dungeon_index.json`  <- tools/distant_world.py
+- `dungeon_models.txt`  <- tools/distant_world.py
+- `failed.txt`  <- tools/make_local_queue.py
+- `hot_tier.txt`  <- area2/hot_atmos.py
+- `large_preview.json`  <- tools/large_refs_preview.py, unreal/SkyBridge/live_bridge.py
+- `lights.tsv`  <- unreal/SkyBridge/Source/SkyBridge/SkyrimCameraActor.cpp
+- `memory_status.json`  <- unreal/SkyBridge/memory_governor.py
+- `mesh_index.json`  <- tools/mesh_index.py
+- `models.json`  <- tools/grass_world.py, tools/mesh_index.py
+- `night_mode.txt`  <- area2/night_test.py
+- `no_watchdog.txt`  <- tools/editor_watchdog.py
+- `npc_step.txt`  <- area2/cap_root.py, area2/npc_capture.py
+- `placements.csv`  <- unreal/SkyBridge/Source/SkyBridge/SkyrimCameraActor.cpp
+- `pose_rate.txt`  <- area2/probe_pose_rate.py
+- `preview.txt`  <- area2/preview_sky.py
+- `probe_stream_limbs.py`  <- area2/probe_stream_limbs.py
+- `quality.txt`  <- unreal/SkyBridge/atmosphere.py
+- `ready.txt`  <- tools/asset_service.py, unreal/SkyBridge/live_bridge.py, unreal/SkyBridge/offline_import.py
+- `requests.txt`  <- tools/asset_service.py, tools/grass_world.py, unreal/SkyBridge/live_bridge.py
+- `sbperf_cprof.txt`  <- area2/sbperf_cprof.py
+- `sbperf_long.txt`  <- area2/sbperf_long.py
+- `shot_request.txt`  <- area2/night_test.py, unreal/SkyBridge/live_bridge.py
+- `sky_step.txt`  <- area2/sky_capture.py
+- `sp.txt`  <- area2/probe_sp.py
+- `spaced_names_ok.txt`  <- area2/test_spaced_names.py, unreal/SkyBridge/live_bridge.py
+- `swap_npc.py`  <- area2/fix_npc_mats.py, area2/swap_reset.py
+- `test_spaced_names.py`  <- area2/test_spaced_names.py
+- `ue_actors.csv`  <- tools/verify_unreal.py, unreal/SkyBridge/Source/SkyBridge/SkyrimCameraActor.cpp
+- `water.csv`  <- unreal/SkyBridge/Source/SkyBridge/SkyrimCameraActor.cpp
+- `water_flow.csv`  <- tools/water_flow.py, unreal/SkyBridge/water_flow_apply.py
+- `water_quads.csv`  <- tools/water_flow.py
+- `water_wide.csv`  <- tools/distant_world.py, tools/land_terrain.py, tools/land_textures.py, tools/tamriel_terrain.py ...
+
+## environment variable (10)
+- `FORCE`  <- tools/blender_export.py, tools/grass_blender.py, tools/land_terrain.py
+- `LOCALAPPDATA`  <- tools/find_overrides.py, tools/grass_placement.py, tools/grass_world.py, tools/land_textures.py
+- `OFFLINE_LIMIT`  <- unreal/SkyBridge/offline_import.py
+- `OFFLINE_MINUTES`  <- unreal/SkyBridge/offline_import.py
+- `OFFLINE_NPCS`  <- unreal/SkyBridge/offline_import.py
+- `SHOWCASE_DIR`  <- tools/showcase_shot.py
+- `SKY_CONVERT_MATERIALS`  <- unreal/SkyBridge/remaster_materials.py
+- `SKY_LOD_TERRAIN`  <- unreal/SkyBridge/remaster_materials.py
+- `SKY_LOD_WATER`  <- unreal/SkyBridge/remaster_materials.py
+- `USERPROFILE`  <- start_bridge.py
+
+## command-line option (59)
+- `--autobuild`  <- tools/npc_batch.py
+- `--blender`  <- tools/land_terrain.py
+- `--blender-obj`  <- tools/land_terrain.py
+- `--chunk`  <- tools/tamriel_terrain.py
+- `--creature`  <- tools/npc_skin.py
+- `--dump`  <- tools/npc_hair_tint.py
+- `--dungeons`  <- tools/distant_world.py
+- `--force`  <- tools/land_textures.py, tools/npc_batch.py
+- `--fov`  <- tools/lod_horizon_preview.py
+- `--full-skyrim-graphics`  <- start_bridge.py
+- `--height`  <- tools/lod_horizon_preview.py
+- `--interiors`  <- tools/distant_world.py
+- `--keep-near`  <- tools/lod_objects.py
+- `--l4`  <- tools/lod_objects.py
+- `--l8`  <- tools/lod_objects.py
+- `--land`  <- tools/tamriel_terrain.py
+- `--limit`  <- tools/run_local_queue.py
+- `--lod`  <- tools/land_terrain.py
+- `--low`  <- tools/tamriel_terrain.py
+- `--max`  <- tools/shot_session.py
+- `--max-hours`  <- tools/shutdown_after_import.py
+- `--max-src`  <- tools/upscale_textures.py
+- `--min-commit`  <- tools/lod_horizon_preview.py
+- `--models`  <- tools/grass_placement.py
+- `--no-blender`  <- tools/lod_objects.py
+- `--no-overlay`  <- start_bridge.py
+- `--no-shutdown`  <- tools/shutdown_after_import.py
+- `--no-tex`  <- tools/land_terrain.py
+- `--objects-only`  <- tools/lod_objects.py
+- `--old-thumbs`  <- tools/land_textures.py
+- `--only`  <- tools/run_local_queue.py
+- `--opacity`  <- start_bridge.py
+- `--overlay-only`  <- start_bridge.py
+- `--pitch`  <- tools/lod_horizon_preview.py
+- `--preview`  <- tools/grass_placement.py
+- `--quiet`  <- tools/land_terrain.py
+- `--radius`  <- tools/lod_objects.py
+- `--remaster`  <- start_bridge.py
+- `--remaster-off`  <- start_bridge.py
+- `--res`  <- tools/lod_horizon_preview.py
+- `--restore`  <- tools/skyrim_plugins.py
+- `--restore-skyrim`  <- start_bridge.py
+- `--retry-failed`  <- tools/run_local_queue.py
+- `--serve`  <- tools/tamriel_terrain.py
+- `--side-by-side`  <- start_bridge.py
+- `--skyrim-only`  <- start_bridge.py
+- `--skyrim-profile-off`  <- start_bridge.py
+- `--stats`  <- tools/distant_world.py, tools/grass_placement.py, tools/grass_world.py, tools/tamriel_world.py
+- `--status`  <- tools/run_local_queue.py
+- `--stop`  <- play.py
+- `--tex`  <- tools/lod_horizon_preview.py
+- `--texmax`  <- tools/lod_objects.py
+- `--trees-only`  <- tools/lod_objects.py
+- `--ue-only`  <- start_bridge.py
+- `--undo`  <- tools/skyrim_lightweight.py
+- `--until`  <- tools/run_local_queue.py
+- `--views`  <- tools/lod_horizon_preview.py
+- `--water`  <- tools/distant_world.py, tools/tamriel_terrain.py
+- `--world`  <- tools/distant_world.py
+
+## console variable (35)
+- `r.Editor.Viewport.ScreenPercentage`  <- area2/probe_sp.py, unreal/SkyBridge/atmosphere.py
+- `r.Editor.Viewport.ScreenPercentageMode.RealTime`  <- unreal/SkyBridge/live_bridge.py
+- `r.LightShaftQuality`  <- unreal/SkyBridge/atmosphere.py
+- `r.Lumen.HardwareRayTracing`  <- tools/max_quality.py, tools/perf_profile.py, unreal/SkyBridge/atmosphere.py
+- `r.Lumen.HardwareRayTracing.LightingMode`  <- tools/max_quality.py
+- `r.Lumen.ScreenProbeGather.DownsampleFactor`  <- tools/max_quality.py
+- `r.Lumen.ScreenProbeGather.TracingOctahedronResolution`  <- tools/max_quality.py
+- `r.NGX.DLSS.DenoiserMode`  <- unreal/SkyBridge/atmosphere.py
+- `r.NGX.DLSS.Enable`  <- unreal/SkyBridge/live_bridge.py
+- `r.NGX.DLSS.Preset`  <- unreal/SkyBridge/live_bridge.py
+- `r.NGX.DLSSRR.Preset`  <- unreal/SkyBridge/live_bridge.py
+- `r.Nanite.MaxPixelsPerEdge`  <- tools/max_quality.py
+- `r.ScreenPercentage`  <- tools/max_quality.py, tools/set_cvar.py, tools/shot_session.py
+- `r.Shadow.Virtual.Enable`  <- unreal/SkyBridge/atmosphere.py
+- `r.Shadow.Virtual.ResolutionLodBiasDirectional`  <- tools/max_quality.py
+- `r.Shadow.Virtual.SMRT.RayCountDirectional`  <- tools/max_quality.py
+- `r.SkyAtmosphere.AerialPerspectiveLUT.FastApplyOnOpaque`  <- unreal/SkyBridge/atmosphere.py
+- `r.Streaming.Boost`  <- tools/max_quality.py
+- `r.Streaming.HiddenPrimitiveScale`  <- unreal/SkyBridge/memory_governor.py
+- `r.Streaming.LimitPoolSizeToVRAM`  <- unreal/SkyBridge/memory_governor.py
+- `r.Streaming.MipBias`  <- tools/max_quality.py, unreal/SkyBridge/memory_governor.py
+- `r.Streaming.PoolSize`  <- tools/max_quality.py, unreal/SkyBridge/memory_governor.py
+- `r.VRS.ContrastAdaptiveShading`  <- unreal/SkyBridge/memory_governor.py
+- `r.VRS.Enable`  <- unreal/SkyBridge/memory_governor.py
+- `r.VolumetricCloud.ShadowMap.MaxResolution`  <- unreal/SkyBridge/atmosphere.py
+- `r.VolumetricCloud.ShadowMap.RaySampleMaxCount`  <- unreal/SkyBridge/atmosphere.py
+- `r.VolumetricCloud.ShadowMap.TemporalFiltering.NewFrameWeight`  <- unreal/SkyBridge/atmosphere.py
+- `r.VolumetricCloud.SkyAO`  <- unreal/SkyBridge/atmosphere.py
+- `r.VolumetricCloud.ViewRaySampleMaxCount`  <- tools/max_quality.py, unreal/SkyBridge/atmosphere.py
+- `r.VolumetricFog`  <- unreal/SkyBridge/atmosphere.py
+- `r.VolumetricFog.GridPixelSize`  <- tools/max_quality.py, unreal/SkyBridge/atmosphere.py
+- `r.VolumetricFog.GridSizeZ`  <- unreal/SkyBridge/atmosphere.py
+- `sg.GlobalIlluminationQuality`  <- tools/max_quality.py
+- `sg.ReflectionQuality`  <- tools/max_quality.py
+- `sg.ShadowQuality`  <- tools/max_quality.py, tools/set_cvar.py
+
+## sky command / SKSE file (3)
+- `SkyrimUnrealBridge.autoload`  <- plugin/src/main.cpp
+- `SkyrimUnrealBridge.dump`  <- plugin/src/main.cpp
+- `SkyrimUnrealBridge.sky`  <- play.py, plugin/src/main.cpp, tools/photo_keys.py, tools/shot_session.py
