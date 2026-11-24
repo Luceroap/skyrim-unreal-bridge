@@ -1,0 +1,27 @@
+﻿{
+    "FileVersion":  3,
+    "EngineAssociation":  "5.8",
+    "Category":  "",
+    "Description":  "Mirrors a live Skyrim SE camera via shared memory",
+    "Modules":  [
+                    {
+                        "Name":  "SkyBridge",
+                        "Type":  "Runtime",
+                        "LoadingPhase":  "Default"
+                    }
+                ],
+    "Plugins":  [
+                    {
+                        "Name":  "PythonScriptPlugin",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "DLSS",
+                        "Enabled":  true
+                    },
+                    {
+                        "Name":  "StreamlineNGXCommon",
+                        "Enabled":  true
+                    }
+                ]
+}

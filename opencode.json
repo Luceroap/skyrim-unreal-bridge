@@ -1,0 +1,226 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "aidan-local/qwen3:30b-opencode",
+  "providers": {
+    "aidan-local": {
+      "name": "Aidan Local Qwen3 30B",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "http://127.0.0.1:11434/v1"
+      },
+      "body": {
+        "keep_alive": "2m",
+        "reasoning_effort": "none",
+        "temperature": 0.2
+      },
+      "models": {
+        "qwen3:30b-opencode": {
+          "name": "Qwen3 30B Local Tasks - 32K",
+          "modelID": "qwen3:30b-opencode",
+          "capabilities": {
+            "tools": true,
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "limit": {
+            "context": 32768,
+            "output": 4096
+          }
+        }
+      }
+    }
+  },
+  "instructions": [
+    "OPENCODE_LOCAL.md"
+  ],
+  "tool_output": {
+    "max_lines": 160,
+    "max_bytes": 12000
+  },
+  "compaction": {
+    "auto": true,
+    "keep": {
+      "tokens": 6000
+    },
+    "buffer": 6000
+  },
+  "watcher": {
+    "ignore": [
+      "area/**",
+      "area2/**",
+      "build/**",
+      "deps/**",
+      "staging/**",
+      "unreal.old_before_move/**",
+      "unreal/**/Saved/**",
+      "unreal/**/Intermediate/**",
+      "unreal/**/Content/**"
+    ]
+  },
+  "permissions": [
+    {
+      "action": "*",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "glob",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "grep",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "edit",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "question",
+      "resource": "*",
+      "effect": "allow"
+    },
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "read",
+      "resource": "*.env*",
+      "effect": "ask"
+    },
+    {
+      "action": "edit",
+      "resource": ".git/*",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "git status *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git diff *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "git log *",
+      "effect": "allow"
+    },
+    {
+      "action": "subagent",
+      "resource": "*",
+      "effect": "deny"
+    },
+    {
+      "action": "webfetch",
+      "resource": "*",
+      "effect": "deny"
+    },
+    {
+      "action": "websearch",
+      "resource": "*",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "git push *",
+      "effect": "deny"
+    }
+  ],
+  "agents": {
+    "title": {
+      "model": "aidan-local/qwen3:30b-opencode"
+    },
+    "summary": {
+      "model": "aidan-local/qwen3:30b-opencode"
+    },
+    "compaction": {
+      "model": "aidan-local/qwen3:30b-opencode"
+    },
+    "bridge": {
+      "description": "Focused local coding helper for the Skyrim bridge",
+      "mode": "primary",
+      "model": "aidan-local/qwen3:30b-opencode",
+      "steps": 12,
+      "system": "You are a concise coding assistant. Execute tools immediately when requested. Do not narrate plans, speculate, repeat instructions, or emit analysis. Work on one concrete task at a time. Use evidence from actual tool results. A failed lookup means only that exact lookup failed; it never proves other files or directories are missing. After two failed attempts, stop guessing and report the exact tool error. Never claim a file changed or a test passed unless a tool confirms it. /no_think\nThe Skyrim bridge project exists at C:/Users/Aidan/SkyrimUnrealBridge. Its current briefing is C:/Users/Aidan/SkyrimUnrealBridge/AGENT_BRIEFING.md. live_bridge.py and memory_governor.py are under unreal/SkyBridge/, not the root. If asked about the bridge from a different workspace, use those exact absolute paths to read. Do not create replacement files, move the project, or claim it is missing because a relative read failed. Before editing, ask the user to open the actual bridge project if the active workspace differs. In PowerShell paths use ordinary single backslashes or forward slashes; do not use cmd-only dir /b. Prefer read/glob/grep tools over shell for file discovery. Preserve other workers changes. Do not install, download, enter passwords, change Windows security, start games, or push Git unless explicitly authorized for that task."
+    },
+    "bridge-reviewer": {
+      "description": "Read-only local bridge reviewer",
+      "mode": "primary",
+      "model": "aidan-local/qwen3:30b-opencode",
+      "steps": 10,
+      "system": "You are a concise coding assistant. Execute tools immediately when requested. Do not narrate plans, speculate, repeat instructions, or emit analysis. Work on one concrete task at a time. Use evidence from actual tool results. A failed lookup means only that exact lookup failed; it never proves other files or directories are missing. After two failed attempts, stop guessing and report the exact tool error. Never claim a file changed or a test passed unless a tool confirms it. /no_think\nThe Skyrim bridge project exists at C:/Users/Aidan/SkyrimUnrealBridge. Its current briefing is C:/Users/Aidan/SkyrimUnrealBridge/AGENT_BRIEFING.md. live_bridge.py and memory_governor.py are under unreal/SkyBridge/, not the root. If asked about the bridge from a different workspace, use those exact absolute paths to read. Do not create replacement files, move the project, or claim it is missing because a relative read failed. Before editing, ask the user to open the actual bridge project if the active workspace differs. In PowerShell paths use ordinary single backslashes or forward slashes; do not use cmd-only dir /b. Prefer read/glob/grep tools over shell for file discovery. Preserve other workers changes. Do not install, download, enter passwords, change Windows security, start games, or push Git unless explicitly authorized for that task.\nReview only. Read targeted functions and callers. Report concrete bugs with path and line evidence. Do not change files or execute commands.",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git status *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git diff *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git log *",
+          "effect": "allow"
+        }
+      ]
+    }
+  },
+  "commands": {
+    "bridge-status": {
+      "description": "Inspect bridge status without starting the games",
+      "template": "Read AGENT_BRIEFING.md and inspect the relevant recent logs and git status. Report what is confirmed working, the latest failures, and one high-value next fix. Do not start Skyrim or Unreal, import assets, edit files, or download anything. Keep the answer short. /no_think",
+      "agent": "bridge-reviewer"
+    },
+    "bridge-review": {
+      "description": "Review a specific file for concrete bugs",
+      "template": "Review $ARGUMENTS for concrete correctness or memory-growth bugs. Read the actual implementation and its callers. Report only findings supported by file paths and line numbers; distinguish uncertainty. Do not edit files or launch software. Keep the scope narrow. /no_think",
+      "agent": "bridge-reviewer"
+    },
+    "bridge-fix": {
+      "description": "Implement one focused bridge task",
+      "template": "Complete this focused task: $ARGUMENTS. Read AGENT_BRIEFING.md and the relevant code. Inspect git status and preserve other agents work. Make the smallest useful change, run appropriate lightweight validation, and report exactly what changed and what remains unverified. Do not start Skyrim, Unreal, imports, or other models unless explicitly asked. /no_think",
+      "agent": "bridge"
+    },
+    "bridge-check": {
+      "description": "Verify the real project files before starting work",
+      "agent": "bridge-reviewer",
+      "template": "Use read, not shell, to read the first 15 lines of C:/Users/Aidan/SkyrimUnrealBridge/AGENT_BRIEFING.md and the first 8 lines of C:/Users/Aidan/SkyrimUnrealBridge/unreal/SkyBridge/memory_governor.py. Report the purpose of each in two sentences. Do not read other files, edit, or speculate. /no_think"
+    }
+  },
+  "default_agent": "bridge"
+}

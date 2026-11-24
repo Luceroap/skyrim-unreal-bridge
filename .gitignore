@@ -1,0 +1,23 @@
+# Old copies and local build output
+*.bak*
+*.orig
+*.log
+__pycache__/
+build/
+deps/
+packaged/
+staging/
+# Never publish game, mod or engine files (Bethesda / Epic licenses)
+*.esm
+*.esp
+*.esl
+*.bsa
+*.ba2
+*.nif
+*.dds
+*.uasset
+*.umap
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/

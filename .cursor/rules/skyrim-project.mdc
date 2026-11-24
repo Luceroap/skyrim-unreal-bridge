@@ -1,0 +1,13 @@
+---
+description: Skyrim to Unreal remaster project - shared rules for every agent
+alwaysApply: true
+---
+Before doing anything, read in this order: `AGENT_BRIEFING.md` (hard rules, layout, commands, lessons), then the last 30 lines of `notes/AGENT_LOG.md`, then `COORDINATION.md` (file ownership) if you will edit shared files.
+
+- Several agents (Claude Code, Cursor, Codex, free local models) work in this folder at the same time. Check `git status` first; do not touch files with someone else's uncommitted edits unless you are asked to.
+- Git is local only, never push. Commit only your own paths with `git add <paths>` (never `-A`, reset, checkout, stash or clean). End commit messages with `Co-Authored-By: <your model> <noreply@anthropic.com>`.
+- After each finished piece of work append one line to `notes/AGENT_LOG.md`.
+- Never minimize Skyrim, never run two UnrealEditor.exe, check free memory commit before heavy work (`python tools/healthcheck.py`).
+- Find code with `notes/index/` and `notes/FILE_MAP.md`; local model summaries in `notes/files/` can be wrong, verify them.
+- Grunt work (docs, summaries, type hints) goes to the local models: see `LOCAL_MODELS.md`. Their output lands in `staging/`; tasks they could not do are in `notes/needs_better_model/`.
+- Plain English, ASCII file names, no downloads/installs/accounts/passwords.

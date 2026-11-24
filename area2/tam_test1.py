@@ -1,0 +1,17 @@
+import importlib, time, os
+import tamriel_live
+importlib.reload(tamriel_live)
+t = time.time()
+m = tamriel_live.far_material()
+print("far material", m, "%.1fs" % (time.time() - t))
+t = time.time()
+tamriel_live.import_fbx(os.path.join(tamriel_live.AREA, "export", "tlo_0_-1.fbx"), "/Game/Tamriel")
+mesh = unreal.load_asset("/Game/Tamriel/tlo_0_-1")
+print("import %.1fs" % (time.time() - t), mesh)
+print("slots", [str(s.material_slot_name) for s in mesh.static_materials][:20])
+print("nanite", mesh.get_editor_property("nanite_settings").get_editor_property("enabled"))
+b = mesh.get_bounds()
+print("bounds", b.origin, b.box_extent)
+t = time.time()
+mi = tamriel_live.far_instance(0, -1)
+print("mi", mi, "%.1fs" % (time.time() - t))

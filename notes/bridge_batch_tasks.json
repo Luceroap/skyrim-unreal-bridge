@@ -1,0 +1,201 @@
+[
+  {
+    "id": "01_memory",
+    "title": "Memory pressure and cache limits",
+    "focus": "Find whether memory-pressure handling can fail to reduce retained assets or repeatedly allocate new objects.",
+    "sources": [
+      {
+        "path": "unreal/SkyBridge/memory_governor.py",
+        "first": 1,
+        "last": 400
+      },
+      {
+        "path": "unreal/SkyBridge/live_bridge.py",
+        "first": 961,
+        "last": 1130
+      }
+    ]
+  },
+  {
+    "id": "02_world",
+    "title": "World actor creation and cleanup",
+    "focus": "Check whether departed references, lights, or queued entries remain allocated or spawn duplicates.",
+    "sources": [
+      {
+        "path": "unreal/SkyBridge/live_bridge.py",
+        "first": 63,
+        "last": 105
+      },
+      {
+        "path": "unreal/SkyBridge/live_bridge.py",
+        "first": 535,
+        "last": 678
+      }
+    ]
+  },
+  {
+    "id": "03_imports",
+    "title": "Live imports and prefetch growth",
+    "focus": "Check import deduplication, retries, and prefetch queue growth.",
+    "sources": [
+      {
+        "path": "unreal/SkyBridge/live_bridge.py",
+        "first": 482,
+        "last": 534
+      },
+      {
+        "path": "unreal/SkyBridge/live_bridge.py",
+        "first": 773,
+        "last": 830
+      },
+      {
+        "path": "unreal/SkyBridge/ue_assets.py",
+        "first": 1,
+        "last": 250
+      }
+    ]
+  },
+  {
+    "id": "04_npc_lifetime",
+    "title": "NPC mesh and actor lifetime",
+    "focus": "Check mesh caching, failed imports, stale actors, and cleanup when characters leave.",
+    "sources": [
+      {
+        "path": "unreal/SkyBridge/npc_live.py",
+        "first": 1,
+        "last": 38
+      },
+      {
+        "path": "unreal/SkyBridge/npc_live.py",
+        "first": 310,
+        "last": 409
+      },
+      {
+        "path": "unreal/SkyBridge/npc_live.py",
+        "first": 701,
+        "last": 850
+      }
+    ]
+  },
+  {
+    "id": "05_npc_pose",
+    "title": "NPC animation and T-pose handling",
+    "focus": "Check rest-pose initialization, stale pose handling, and interpolation for a concrete defect.",
+    "sources": [
+      {
+        "path": "unreal/SkyBridge/npc_live.py",
+        "first": 372,
+        "last": 429
+      },
+      {
+        "path": "unreal/SkyBridge/npc_live.py",
+        "first": 438,
+        "last": 643
+      }
+    ]
+  },
+  {
+    "id": "06_terrain",
+    "title": "Terrain material readiness",
+    "focus": "Investigate source-level causes of missing textures or checkerboard materials; distinguish shader compilation assumptions from proven defects.",
+    "sources": [
+      {
+        "path": "unreal/SkyBridge/land_terrain_live.py",
+        "first": 34,
+        "last": 106
+      },
+      {
+        "path": "unreal/SkyBridge/land_terrain_live.py",
+        "first": 151,
+        "last": 347
+      }
+    ]
+  },
+  {
+    "id": "07_water",
+    "title": "Water lifecycle and flow application",
+    "focus": "Check duplicated water actors, material rebuilds, and flow data application.",
+    "sources": [
+      {
+        "path": "unreal/SkyBridge/live_bridge.py",
+        "first": 204,
+        "last": 262
+      },
+      {
+        "path": "unreal/SkyBridge/water_flow_apply.py",
+        "first": 1,
+        "last": 450
+      }
+    ]
+  },
+  {
+    "id": "08_launcher",
+    "title": "Launcher and duplicate processes",
+    "focus": "Check whether startup or restart paths can create duplicate editors, leave workers alive, or miss launch failures.",
+    "sources": [
+      {
+        "path": "play.py",
+        "first": 1,
+        "last": 350
+      }
+    ]
+  },
+  {
+    "id": "09_conversion",
+    "title": "Asset conversion failure recovery",
+    "focus": "Check request handling, success markers, partial conversion output, and recovery after interruption.",
+    "sources": [
+      {
+        "path": "tools/asset_service.py",
+        "first": 1,
+        "last": 350
+      }
+    ]
+  },
+  {
+    "id": "10_offline_import",
+    "title": "Offline import completion reporting",
+    "focus": "Check whether failed imports can be mistaken for success, and whether resume behavior is reliable.",
+    "sources": [
+      {
+        "path": "tools/offline_import.py",
+        "first": 1,
+        "last": 350
+      },
+      {
+        "path": "unreal/SkyBridge/offline_import.py",
+        "first": 1,
+        "last": 400
+      }
+    ]
+  },
+  {
+    "id": "11_hud",
+    "title": "HUD and menu focus transitions",
+    "focus": "Check focus and window-state transitions for a concrete way the game could stop receiving input or lose the HUD.",
+    "sources": [
+      {
+        "path": "remaster_watch.py",
+        "first": 1,
+        "last": 450
+      }
+    ]
+  },
+  {
+    "id": "12_weather",
+    "title": "Weather effect cleanup",
+    "focus": "Check rain and weather-effect creation, hiding, and cleanup across transitions.",
+    "sources": [
+      {
+        "path": "unreal/SkyBridge/weather_fx.py",
+        "first": 1,
+        "last": 400
+      },
+      {
+        "path": "unreal/SkyBridge/live_bridge.py",
+        "first": 329,
+        "last": 465
+      }
+    ]
+  }
+]
